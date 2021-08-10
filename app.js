@@ -9,5 +9,5 @@ app.listen(3050, () => {
     console.log('Servidor corriendo en el puerto 3050');
 });
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/home.html'));
+    res.sendFile(path.join(__dirname, '/views/productCart.html'));
 });
