@@ -1,0 +1,48 @@
+.header-aux {
+    height: 100px;
+}
+
+.contenedor {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.register-wrapper {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -5px grey;
+}
+
+.input-wrapper {
+    margin: 5px 0px 5px 0px;
+    display: flex;
+}
+
+.input-wrapper input {
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+}
+
+.register-button {
+    align-self: center;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    height: 10%;
+    width: 70%;
+    border-radius: 15px;
+}
+
+.register-button:hover {
+    background-color: rgb(97, 97, 97);
+    color: white;
+}
