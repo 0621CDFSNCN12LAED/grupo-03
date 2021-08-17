@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" 
+    rel="stylesheet"> 
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/stylesSA.css">
     <title>Proyecto Integrador</title>
@@ -17,9 +19,11 @@
             <div class="burger-menu">
             <i class="fas fa-bars"></i>
             </div>
-            <div><img src="/img/logoheader.png" alt="Logo de la empresa"></div>
-            <i class="fas fa-user-circle"></i>
-            <i class="fas fa-shopping-cart"></i>
+            <div>
+              <a href="/"><img src="/images/morfi_logo_resize.jpg" alt="Logo de la empresa"  class="logo"></a>
+            </div>
+            <a href="/views/login.html"><i class="fas fa-user-circle"></i></a>
+            <a href="/views/productCart.html"><i class="fas fa-shopping-cart"></i></a>
         </div>
         
         
@@ -35,59 +39,58 @@
 
     <main>
        
-      <div id="busqueda">
-        <p>barra de búsqueda</p>
-      </div> 
+      <div class="barra-busqueda">
+        <form action="#" method="POST">
+            <input type="text" name="search" placeholder="lo que buscás" > 
+          
+            <i class="fas fa-search lupa"></i>
+        </form>      
+         
+       </div>
 
-      <div id="slide" class="border-img"><!--<img src=""alt=-->"ACA VA EL SLIDE CON LAS OFERTAS Y PROMOCIONES"  ></div>
+      <div id="slide" class="border-img"><!--<img src=""alt=-->"ACA VA EL SLIDE CON LAS OFERTAS Y PROMOCIONES" </div>
         
        <section>
            <h4>NUESTROS PRODUCTOS</h4>
 
            <div class="flex-box">
               <div class="wraper">
-                  <article>
-                   <a href="#"><img src="/img/carniceria.jpeg" alt="carnicería" width="100%"></a>
+                  <article class="shadow">
+                   <a href="#"><img src="/imgSA/carniceria.jpeg" alt="carnicería" width="100%"></a>
+                   <p>CARNES</p>
                   </article>   
               </div>
 
-              <div class="wraper">
-                <article>
-                 <a href="#"><img src="/img/vegana.jpeg" alt="" width="100%"></a>
+              <div class="wraper ">
+                <article class="shadow">
+                 <a href="#"><img src="/imgSA/vegana.jpeg" alt="" width="100%"></a>
+                 <p>VEGGIES</p>
                 </article>   
               </div>
               
               <div class="wraper">
-                <article>
-                 <a href="#"><img src="/img/pescaderia.jpeg" alt="" width="100%"></a>
+                <article class="shadow">
+                 <a href="#"><img src="/imgSA/pescaderia.jpeg" alt="" width="100%"></a>
+                 <p>PESCADERIA</p>
                 </article>   
               </div>  
 
               <div class="wraper">
-                <article>
-                 <a href="#"><img src="/img/polleria.jpeg" alt="" width="100%"></a>
+                <article class="shadow">
+                 <a href="#"><img src="/imgSA/polleria.jpeg" alt="" width="100%"></a>
+                 <p>GRANJA</p>
                 </article>   
               </div>  
 
             </div> 
-            <!-- <ol>
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-            </ol>
-            <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-            </ul>-->
+            
        </section>
         
     </main>
 
     <footer>
-        <div class="footer-box ">
-          <div class="logo-footer"><img src="/img/logo.png" alt="Logo de la empresa"></div>
-
+       
+      
           <nav class="footer-nav">
               <ul>
                   <li><a href="#">Productos</a></li>
@@ -98,7 +101,7 @@
 
           </nav>    
 
-        </div>  
+        
 
     </footer>
 
