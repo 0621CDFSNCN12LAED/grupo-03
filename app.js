@@ -12,10 +12,10 @@ app.listen(3050, () => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/indexSA.html'));
 });
-app.get('/views/login.html', (req, res) => {
+app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/login.html'));
 });
-app.get('/views/productCart.html', (req, res) => {
+app.get('/productCart', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/productCart.html'));
 });
 app.get('/register', (req, res) => {

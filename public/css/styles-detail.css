@@ -37,21 +37,37 @@ header {
    
 }
 
-.product-detail{
+.product-price{
+    margin-top: 60px;
+}
+.product-quantity{
+    margin-top: 40px;
     display: flex;
+    justify-content: center;
 }
-.product-img{
-    width: 45%;
-    margin-top: 50px;
-    margin-left: 100px;
-
+.product-quantity button{
+    width: 45px;
+    height: 45px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 0;
+    background: #fff;
 }
-.product-vip{
-    margin-top: 50px;
-    width: 45%;
+.product-quantity input{
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    width: 100px;
+    font-size: 20px;
+    color: #000;
+    font-weight: 300;
 }
 .product-description{
-    width: 90%;
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 
 footer {
@@ -84,7 +100,26 @@ footer {
    
 }
 
-@media (min-width: 1000px){
+@media (min-width: 360px){
+    .product-detail{
+        flex-direction: column;
+        margin-top: 40px;
+    }
+    .product-img{
+        width: 75%;
+        max-height: 300px;
+    }
+    .product-vip{
+        margin-top: 20px;
+    }
+    .product-price {
+        margin-top: 30px;
+    }
+    .product-quantity{
+        margin-top: 20px;
+    }
+}
+@media (min-width: 768px){
     .burger-menu{
         display: none;
     }
@@ -104,6 +139,21 @@ footer {
         padding-right: 50px;
     }
 
+    .product-detail{
+        display: flex;
+        flex-direction: row;
+    }
+    .product-img{
+        width: 45%;
+        height: auto;
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+    .product-vip{
+        margin-top: 50px;
+        width: 45%;
+    }
+    
     .footer-nav{
         display: flex;
         flex-wrap: wrap;
