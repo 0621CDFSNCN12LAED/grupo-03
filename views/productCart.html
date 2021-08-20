@@ -5,78 +5,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/stylessc.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
-    rel="stylesheet" />
-
-    <title>Morfi</title>
+    <link rel="stylesheet" href="/css/stylesSSC.css">
+    <title>Proyecto Integrador</title>
 </head>
 
 <body>
     <header>
-        
-        <div class="burger-menu burg">
-            <i class="fas fa-bars light-text"></i>
+
+        <div class="header1">
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div>
+                <a href="/"><img src="/images/morfi_logo_resize.jpg" alt="Logo de la empresa" class="logo"></a>
+            </div>
+            <a href="/views/login.html"><i class="fas fa-user-circle"></i></a>
+            <a href="/views/productCart.html"><i class="fas fa-shopping-cart"></i></a>
         </div>
-        
-        <div><img src="" alt="Logo de la empresa"></div>
 
-        <div class="myaccount">
-        <i class="fas fa-user-circle"></i>
-        </div>
-                  
-    </header>
-    <main>
-        <div>
-            <input type="text" placeholder="¿Qué producto buscás?" />
-            <button><i class="fa fa-search"></i></button>
-        </div>
-              
-        <div><img src="/images/img-home-banner.jpg" alt="" width="100%"></div>
-        <section>
-
-            <article>
-                <h2></h2>
-                <img src="" alt="" width="100%">
-                <p></p>
-                <p></p>
-                <h3></h3>
-            </article>
-
-            <article>
-                <h2></h2>
-                <img src="" alt="" width="100%">
-                <p></p>
-                <p></p>
-                <h3></h3>
-            </article>
-
-            <article>
-                <h2></h2>
-                <img src="" alt="" width="100%">
-                <p></p>
-                <p></p>
-                <h3></h3>
-            </article>
-            <ol>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-            </ol>
+        <nav class="header-nav">
             <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Tiendas Oficiales</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Ayuda</a></li>
             </ul>
-            <a href="https://www.google.com/">Ir a Google</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-contenedor">
+            <div class="barra-busqueda">
+                <form action="#" method="POST">
+                    <input type="text" name="search" placeholder="lo que buscás">
+
+                    <i class="fas fa-search lupa"></i>
+                </form>
+            </div>
+
+            <div class="nav-search">
+
+                <form action="/categorias" method="POST">
+                    <select name="categoría">
+                        <option value="1">Categoría</option>
+                        <option value="2">Carne Vacuna</option>
+                        <option value="3">Pescados</option>
+                        <option value="4">Mariscos</option>
+                        <option value="5">Pollo</option>
+                        <option value="6">Empanizados</option>
+                        <option value="7">Veganos</option>
+                        <option value="8">Vegetarianos</option>
+                        <option value="9">Celíacos</option>
+                    </select>
+                </form>
+                <form action="/productos" method="POST">
+
+                    <select name="producto">
+                        <option value="1">Buscar por</option>
+                        <option value="2">Frescos</option>
+                        <option value="3">Congelados</option>
+                        <option value="4">Empanizados</option>
+                        <option value="5">Cortes Premium</option>
+                        <option value="6">Pack</option>
+                        <option value="7">Precio</option>
+                    </select>
+                </form>
+            </div>
+            <div>
+                <article>
+                    <a href="#"><img src="/images/productos/camarones.jpg" alt="" width="50%"></a>
+                    <p class="name-product">Camarones</p>
+                    <p class="product-price">Precio por Kilo: $1500</p>
+                </article>
+            </div>
+            <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i>
+            </div>
+        </div>
+
     </main>
     <footer>
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ul>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+            </ul>
+
+        </nav>
 
     </footer>
 
