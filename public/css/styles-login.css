@@ -1,18 +1,19 @@
-body {
-    height: 100vh;
-    font-family: 'Barlow', sans-serif;
+*{
+    box-sizing: border-box;
 }
 
-.header-aux {
-    height: 100px;
-}
+
 
 .contenedor {
-    height: 60vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    padding:5px 10px 30px;
+    max-width: 600px;
+    margin:auto;
+    
 }
 
 .login-wrapper {
@@ -59,11 +60,33 @@ body {
     color: white;
 }
 
+.font-17{
+    font-size: 17px;
+}
+
 .signup-link {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-self: center;
-    width: 75%;
+    width: 95%;
     max-height: 20px;
 }
+
+.signup-link p,
+.signup-link a{
+    font-size: 15px;
+    font-weight: normal;
+}
+
+
+@media (min-width: 768px){
+
+
+    
+     .signup-link{
+         width: 70%;
+     }
+
+    
+ }
