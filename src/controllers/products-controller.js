@@ -6,6 +6,9 @@ const productsController = {
     },
     detail: function (req, res) {
         res.render("products/productDetail", {title: "Morfi-Detalle del Producto"});
+    },
+    edit: function (req, res) {
+        res.render("products/productEdit", {title: "Morfi-Editar producto"});
     }
 };
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/styles-productEdit.css">
+</head>
+<body>
+    <header>
+        <%- include("../partials/header.ejs") %>
+    </header>
+    <main>
+        <h1>Editar Producto</h1>
+        <div class="align-center form-container">
+            <form action="" method="put">
+                <ul class="form-wrapper">
+                    <div class="input-container">
+                        <label for="name">Nombre: </label>
+                        <input type="text" id="name" name="user_name">
+                    </div>
+                    <div class="input-container">
+                        <label for="description">Descripcion: </label>
+                        <input type="textarea" id="description" name="description">
+                    </div>
+                    <div class="input-container">
+                        <label for="image">Imagen: </label>
+                        <input type="image" id="image" name="image">
+                    </div>
+                    <div class="input-container">
+                        <label for="category">Categoria: </label>
+                        <select name="category" id="category">
+                            <option value="1">Categoría</option>
+                            <option value="2">Carne Vacuna</option>
+                            <option value="3">Pescados</option>
+                            <option value="4">Mariscos</option>
+                            <option value="5">Pollo</option>
+                            <option value="6">Empanizados</option>
+                            <option value="7">Veganos</option>
+                            <option value="8">Vegetarianos</option>
+                            <option value="9">Celíacos</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="colores">Colores/tamaños/talles: </label>
+                        <input type="text" name="colores" id="colores">
+                    </div>
+                    <div class="input-container">
+                        <label for="price">Precio: </label>
+                        <input type="currency" name="price" id="price">
+                    </div>
+                </ul>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <%- include("../partials/footer.ejs") %>
+    </footer>
+</body>
+</html>
