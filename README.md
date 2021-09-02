@@ -28,4 +28,4 @@
 
 •	Sarah´s Snacks: La página de inicio comunica muy bien lo que ofrece la empresa con sus textos impactantes, destacándose claramente lo que ofrecen. La página de productos se caracteriza por tener una usabilidad simple pero funcional, en donde los clientes pueden filtrar los productos por categoría y clasificarlos según sus preferencias. También permite ver el carrito de compras junto a la lista de productos ya seleccionados, y así observar rápidamente el subtotal de compras, mientras el usuario continúa realizando otras. Sitio web: https://www.sarahssnacks.com
 
-Link del tablero de trabajo: https://trello.com/
+Link del tablero de trabajo: https://trello.com/grupo3sprints
