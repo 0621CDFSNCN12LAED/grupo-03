@@ -9,47 +9,57 @@
         <%- include("../partials/header.ejs") %>
     </header>
     <main>
-        <h1>Editar Producto</h1>
-        <div class="align-center form-container">
-            <form action="" method="put">
-                <ul class="form-wrapper">
-                    <div class="input-container">
-                        <label for="name">Nombre: </label>
-                        <input type="text" id="name" name="user_name">
+        <section>            
+            <div class="container">
+                <div class="title">Editar Producto</div>
+                <form action="#">
+                    <div class="product-details">
+                        <div class="input-box">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" placeholder="Hamburguesas">
+                        </div>
+                        <div class="input-box">
+                            <label for="description">Descripcion</label>
+                            <input type="text" id="description" placeholder="Hamburguesas de carne 170gr">
+                        </div>
+                        <div class="input-box">
+                            <label for="image">Imagen</label>
+                            <input type="file" class="input-img" accept="image/*">
+                        </div>
+                        <div class="input-box">
+                            <label for="Category">Categoria</label>
+                            <select name="Category" id="Category">
+                                <option value="1">Categoría</option>
+                                <option value="2">Carne Vacuna</option>
+                                <option value="3">Pescados</option>
+                                <option value="4">Mariscos</option>
+                                <option value="5">Pollo</option>
+                                <option value="6">Empanizados</option>
+                                <option value="7">Veganos</option>
+                                <option value="8">Vegetarianos</option>
+                                <option value="9">Celíacos</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="size">Tamaño</label>
+                            <input type="text" id="size" placeholder="Mediana">
+                        </div>
+                        <div class="input-box">
+                            <label for="price">Precio</label>
+                            <input type="text" id="price" placeholder="$300">
+                        </div>
                     </div>
-                    <div class="input-container">
-                        <label for="description">Descripcion: </label>
-                        <input type="textarea" id="description" name="description">
+                    <div class="button-container">
+                        <div class="button">
+                            <input type="submit" value="Cancelar">
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Guardar">
+                        </div>
                     </div>
-                    <div class="input-container">
-                        <label for="image">Imagen: </label>
-                        <input type="file" id="image" name="image" accept="image/*">
-                    </div>
-                    <div class="input-container">
-                        <label for="category">Categoria: </label>
-                        <select name="category" id="category">
-                            <option value="1">Categoría</option>
-                            <option value="2">Carne Vacuna</option>
-                            <option value="3">Pescados</option>
-                            <option value="4">Mariscos</option>
-                            <option value="5">Pollo</option>
-                            <option value="6">Empanizados</option>
-                            <option value="7">Veganos</option>
-                            <option value="8">Vegetarianos</option>
-                            <option value="9">Celíacos</option>
-                        </select>
-                    </div>
-                    <div class="input-container">
-                        <label for="colores">Colores/tamaños/talles: </label>
-                        <input type="text" name="colores" id="colores">
-                    </div>
-                    <div class="input-container">
-                        <label for="price">Precio: </label>
-                        <input type="currency" name="price" id="price">
-                    </div>
-                </ul>
-            </form>
-        </div>
+                </form>
+            </div>
+        </section>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>
