@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/styles-cart.css">
+</head>
+
+<body>
+    <header>
+        <%- include("../partials/header.ejs") %>
+    </header>
+
+    <main>
+        <div class="main-contenedor">
+            <div class="barra-busqueda">
+                <form action="#" method="POST">
+                    <input type="text" name="search" placeholder="lo que buscás">
+
+                    <i class="fas fa-search lupa"></i>
+                </form>
+            </div>
+
+            <div class="nav-search">
+
+                <form action="/categorias" method="POST">
+                    <select name="categoría">
+                        <option value="1">Categoría</option>
+                        <option value="2">Carne Vacuna</option>
+                        <option value="3">Pescados</option>
+                        <option value="4">Mariscos</option>
+                        <option value="5">Pollo</option>
+                        <option value="6">Empanizados</option>
+                        <option value="7">Veganos</option>
+                        <option value="8">Vegetarianos</option>
+                        <option value="9">Celíacos</option>
+                    </select>
+                </form>
+                <form action="/productos" method="POST">
+
+                    <select name="producto">
+                        <option value="1">Buscar por</option>
+                        <option value="2">Frescos</option>
+                        <option value="3">Congelados</option>
+                        <option value="4">Empanizados</option>
+                        <option value="5">Cortes Premium</option>
+                        <option value="6">Pack</option>
+                        <option value="7">Precio</option>
+                    </select>
+                </form>
+            </div>
+            <section>
+                <div class="flex">
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="/products/productDetail">
+                                <img class="product-img" src="/images/productos/milaqueso.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Milanesa con Queso</p>
+                                <p class="product-price">Precio por Kilo: $1500</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article> 
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/espinaca.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Espinaca</p>
+                                <p class="product-price">Precio por Kilo: $800</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/salmonrosad.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Salmon Rosado</p>
+                                <p class="product-price">Precio por Kilo: $2500</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/alitas.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Alitas de Pollo</p>
+                                <p class="product-price">Precio por Kilo: $1000</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/lentejas.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Lentejas</p>
+                                <p class="product-price">Precio por Kilo: $500</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/langostinos.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Langostinos</p>
+                                <p class="product-price">Precio por Kilo: $2000</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/albond.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Albondiga</p>
+                                <p class="product-price">Precio por Kilo: $1200</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="product-wrapper">
+                        <article class="product">
+                            <a href="#">
+                                <img class="product-img" src="/images/productos/papa.jpg">
+                            </a>
+                            <div class="product-content">
+                                <p class="product-name">Papa</p>
+                                <p class="product-price">Precio por Kilo: $700</p>
+                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <%- include("../partials/footer.ejs") %>
+    </footer>
+
+</body>
+
+</html>
