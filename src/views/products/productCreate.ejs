@@ -11,20 +11,20 @@
     <main>
         <section>            
             <div class="container">
-                <div class="title">Editar Producto</div>
+                <div class="title">Crear Producto</div>
                 <form action="/products" method="POST">
                     <div class="product-details">
                         <div class="input-box">
                             <label for="name">Nombre</label>
-                            <input type="text" id="name" placeholder="Hamburguesas">
+                            <input type="text" name="name" id="name" placeholder="Hamburguesas">
                         </div>
                         <div class="input-box">
                             <label for="description">Descripcion</label>
-                            <input type="text" id="description" placeholder="Hamburguesas de carne 170gr">
+                            <input type="text" name="description" id="description" placeholder="Hamburguesas de carne 170gr">
                         </div>
                         <div class="input-box">
                             <label for="image">Imagen</label>
-                            <input type="file" class="input-img" accept="image/*">
+                            <input type="file" name="image" class="input-img" accept="image/*">
                         </div>
                         <div class="input-box">
                             <label for="Category">Categoria</label>
@@ -41,18 +41,15 @@
                             </select>
                         </div>
                         <div class="input-box">
-                            <label for="size">Tamaño</label>
-                            <input type="text" id="size" placeholder="Mediana">
+                            <label for="weight">Peso</label>
+                            <input type="text" name="weight" id="weight" placeholder="25kg">
                         </div>
                         <div class="input-box">
                             <label for="price">Precio</label>
-                            <input type="text" id="price" placeholder="$300">
+                            <input type="text" name="price" id="price" placeholder="$300">
                         </div>
                     </div>
                     <div class="button-container">
-                        <div class="button">
-                            <input type="submit" value="Cancelar">
-                        </div>
                         <div class="button">
                             <input type="submit" value="Guardar">
                         </div>

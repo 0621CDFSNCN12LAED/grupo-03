@@ -1,4 +1,8 @@
+const fs = require("fs");
 const path = require("path");
+
+const productsFilePath = path.join(__dirname, "../data/products.json");
+const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
 const productsController = {
     cart: function (req, res) {
@@ -11,7 +15,16 @@ const productsController = {
         res.render("products/productCreate")
     },
     store: function (req, res) {
-        res.send("Storeee")
+        const lastProduct = products[products.length - 1];
+        const biggestProductId = products.length > 0 ? lastProduct.id : 1;
+        const product = {
+            id: biggestProductId + 1,
+            ...req.body,
+            weight: Number(req.body.weight),
+            price: Number(req.body.price)
+        }
+        products.push(product)
+        res.redirect("/products")
     },
     detail: function (req, res) {
         res.render("products/productDetail")
