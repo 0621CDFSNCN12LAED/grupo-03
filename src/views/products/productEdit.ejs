@@ -16,11 +16,11 @@
                     <div class="product-details">
                         <div class="input-box">
                             <label for="name">Nombre</label>
-                            <input type="text" id="name" placeholder="Hamburguesas">
+                            <input type="text" id="name" value=<%= product.name %> >
                         </div>
                         <div class="input-box">
                             <label for="description">Descripcion</label>
-                            <input type="text" id="description" placeholder="Hamburguesas de carne 170gr">
+                            <input type="text" id="description" value=<%= product.description %> >
                         </div>
                         <div class="input-box">
                             <label for="image">Imagen</label>
@@ -41,18 +41,15 @@
                             </select>
                         </div>
                         <div class="input-box">
-                            <label for="size">Tamaño</label>
-                            <input type="text" id="size" placeholder="Mediana">
+                            <label for="weight">Tamaño</label>
+                            <input type="text" id="weight" value=<%= product.weight %>>
                         </div>
                         <div class="input-box">
                             <label for="price">Precio</label>
-                            <input type="text" id="price" placeholder="$300">
+                            <input type="text" id="price" value="$<%= product.price %>">
                         </div>
                     </div>
                     <div class="button-container">
-                        <div class="button">
-                            <input type="submit" value="Cancelar">
-                        </div>
                         <div class="button">
                             <input type="submit" value="Guardar">
                         </div>

@@ -24,7 +24,6 @@ const productsController = {
     edit: function (req, res) {
         const product = productsService.findOneById(req.params.id);
         res.render("products/productEdit", {product});
-        //Cambiar vista de edit para que sea dinamica
     },
     update: function (req, res) {
         productsService.editOne(req.params.id, req.body, req.file);
