@@ -6,9 +6,8 @@ const productsController = {
         res.render("products/productCart");
     },
     index: function (req, res) {
-        const filteredProducts = productsService.findAll();
-        res.render("products/productIndex", {products: filteredProducts});
-        //Cambiar vista de index para que sea dinamica
+        const randomProducts = productsService.findRandom();
+        res.render("products/productIndex", {products: randomProducts});
     },
     create: function (req, res) {
         res.render("products/productCreate");

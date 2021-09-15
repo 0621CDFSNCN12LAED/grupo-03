@@ -51,102 +51,24 @@
             </div>
             <section>
                 <div class="flex">
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="/products/productDetail">
-                                <img class="product-img" src="/images/productos/milaqueso.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Milanesa con Queso</p>
-                                <p class="product-price">Precio por Kilo: $1500</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article> 
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/espinaca.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Espinaca</p>
-                                <p class="product-price">Precio por Kilo: $800</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/salmonrosad.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Salmon Rosado</p>
-                                <p class="product-price">Precio por Kilo: $2500</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/alitas.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Alitas de Pollo</p>
-                                <p class="product-price">Precio por Kilo: $1000</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/lentejas.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Lentejas</p>
-                                <p class="product-price">Precio por Kilo: $500</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/langostinos.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Langostinos</p>
-                                <p class="product-price">Precio por Kilo: $2000</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/albond.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Albondiga</p>
-                                <p class="product-price">Precio por Kilo: $1200</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="product-wrapper">
-                        <article class="product">
-                            <a href="#">
-                                <img class="product-img" src="/images/productos/papa.jpg">
-                            </a>
-                            <div class="product-content">
-                                <p class="product-name">Papa</p>
-                                <p class="product-price">Precio por Kilo: $700</p>
-                                <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
-                            </div>
-                        </article>
-                    </div>
+
+                    <% products.forEach(product => { %>
+                        
+                        <div class="product-wrapper">
+                            <article class="product">
+                                <a href="/products/<%- product.id %>">
+                                    <img class="product-img" src="/images/productos/milaqueso.jpg">
+                                </a>
+                                <div class="product-content">
+                                    <p class="product-name"><%= product.name %></p>
+                                    <p class="product-price">Precio por Kilo: $<%= product.price %></p>
+                                    <div class="cart-icon-bottom"><i class="fas fa-cart-plus"></i></div>
+                                </div>
+                            </article> 
+                        </div>
+
+                    <%  }); %> 
+
                 </div>
             </section>
         </div>

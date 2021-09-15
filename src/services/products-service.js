@@ -11,6 +11,16 @@ const productsService = {
         });
         return filteredProducts;
     },
+    findRandom() {
+        let indexProducts = [];
+        const filteredProducts = this.findAll();
+        const maxProducts = 8;
+        for (let i = 0; i < maxProducts; i++){
+            const randomIndex = Math.floor(Math.random() * (filteredProducts.length + 1));
+            indexProducts.push(filteredProducts[randomIndex])
+        };
+        return indexProducts;
+    },
 
     filterByCategory(category) {
         return this.findAll().filter((prod) => {
