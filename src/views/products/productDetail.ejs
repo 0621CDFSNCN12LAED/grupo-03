@@ -20,8 +20,8 @@
                 <div class="product-detail">
                     <img class="product-img" src="/images/productos/milaqueso.jpg">
                     <div class="product-vip">
-                        <h2 class="product-title">Milanesa con Queso</h2>
-                        <p class="product-price">$500</p>
+                        <h2 class="product-title"><%= product.name %></h2>
+                        <p class="product-price">$<%= product.price %></p>
                         <div class="product-quantity">
                             <button class="btn minus-btn disabled" type="button">-</button>
                             <input type="text" id="product-quantity" value="1">
@@ -30,9 +30,7 @@
                         <div class="product-shopping-cart"><i class="fas fa-shopping-cart"></i></div>
                     </div>
                 </div>
-                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Temporibus magni at dolorum a tenetur corrupti earum quo tempore, reiciendis natus
-                    iusto sunt autem soluta vel qui ut repellendus asperiores nulla!
+                <p class="product-description"><%= product.description %>
                 </p>
             </article>
     </main>

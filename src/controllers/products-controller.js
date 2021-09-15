@@ -1,42 +1,39 @@
-const fs = require("fs");
-const path = require("path");
-
-const productsFilePath = path.join(__dirname, "../data/products.json");
-const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
+const productsService = require("../services/products-service");
 
 const productsController = {
+    //Ver implementacion del carrito. Necesitamos otra ruta?
     cart: function (req, res) {
-        res.render("products/productCart")
+        res.render("products/productCart");
     },
     index: function (req, res) {
-        res.render("products/productIndex")
+        const filteredProducts = productsService.findAll();
+        res.render("products/productIndex", {products: filteredProducts});
+        //Cambiar vista de index para que sea dinamica
     },
     create: function (req, res) {
-        res.render("products/productCreate")
+        res.render("products/productCreate");
     },
     store: function (req, res) {
-        const lastProduct = products[products.length - 1];
-        const biggestProductId = products.length > 0 ? lastProduct.id : 1;
-        const product = {
-            id: biggestProductId + 1,
-            ...req.body,
-            weight: Number(req.body.weight),
-            price: Number(req.body.price)
-        }
-        products.push(product)
-        res.redirect("/products")
+        productsService.createOne(req.body, req.file);
+        res.redirect("/products");
     },
     detail: function (req, res) {
-        res.render("products/productDetail")
+        //Ver ejercicios resueltos de pablo. Hay que agregar un error cuando no se encuentra el producto
+        const product = productsService.findOneById(req.params.id);
+        res.render("products/productDetail", {product});
     },
     edit: function (req, res) {
-        res.render("products/productEdit")
+        const product = productsService.findOneById(req.params.id);
+        res.render("products/productEdit", {product});
+        //Cambiar vista de edit para que sea dinamica
     },
     update: function (req, res) {
-        
+        productsService.editOne(req.params.id, req.body, req.file);
+        res.redirect("/products");
     },
     destroy: function (req, res) {
-        
+        productsService.destroyOne(req.params.id);
+        res.redirect("/products");
     }
 };
 
