@@ -9,6 +9,10 @@ const productsController = {
         const randomProducts = productsService.findRandom();
         res.render("products/productIndex", {products: randomProducts});
     },
+    byCategory: function (req, res) {
+        const productsByCategory = productsService.filterByCategory(req.params.category);
+        res.render("products/productIndex", {products: productsByCategory}); 
+    },
     create: function (req, res) {
         res.render("products/productCreate");
     },

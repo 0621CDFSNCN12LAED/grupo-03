@@ -16,7 +16,7 @@ const productsService = {
         const filteredProducts = this.findAll();
         const maxProducts = 8;
         for (let i = 0; i < maxProducts; i++){
-            const randomIndex = Math.floor(Math.random() * (filteredProducts.length + 1));
+            const randomIndex = Math.floor(Math.random() * (filteredProducts.length));
             indexProducts.push(filteredProducts[randomIndex])
         };
         return indexProducts;
@@ -24,7 +24,7 @@ const productsService = {
 
     filterByCategory(category) {
         return this.findAll().filter((prod) => {
-            return prod.category == category;
+            return prod.category.toLowerCase() == category;
         });
     },
 
@@ -32,7 +32,6 @@ const productsService = {
         const product = products.find((prod) => {
             return prod.id == id;
         });
-
         return product;
     },
 
@@ -43,7 +42,8 @@ const productsService = {
             id: biggestProductId + 1,
             ...payload,
             weight: Number(payload.weight),
-            price: Number(payload.price)
+            price: Number(payload.price),
+            image: image ? "/images/productos/" + image.filename : "logo_fondo_verde.jpg"
         };
         products.push(product);
         this.save();
@@ -55,7 +55,6 @@ const productsService = {
         product.description = payload.description;
         product.category = payload.category;
         product.price = Number(payload.price);
-        product.discount = Number(payload.discount);
         product.image = image ? image.filename : product.image;
         this.save();
     },

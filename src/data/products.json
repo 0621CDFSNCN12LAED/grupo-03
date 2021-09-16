@@ -183,7 +183,7 @@
         "id": 21,
         "name": "Filete peje",
         "description": "rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes",
-        "image": "filpeje",
+        "image": "/images/productos/filpeje.jpg",
         "category": "Pescados",
         "weight": 3.616,
         "price": 4888.44
@@ -727,5 +727,14 @@
         "category": "Pescados",
         "weight": 3.6,
         "price": 2828.02
+    },
+    {
+        "id": 82,
+        "name": "Asado",
+        "description": "Asado con papas",
+        "category": "Carnes",
+        "weight": 100,
+        "price": 650,
+        "image": "/images/productos/1631766782678.jpg"
     }
 ]
