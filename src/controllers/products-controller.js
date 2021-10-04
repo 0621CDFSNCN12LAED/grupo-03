@@ -1,7 +1,6 @@
 const productsService = require("../services/products-service");
 
 const productsController = {
-    //Ver implementacion del carrito. Necesitamos otra ruta?
     cart: function (req, res) {
         res.render("products/productCart");
     },
@@ -21,7 +20,6 @@ const productsController = {
         res.redirect("/products");
     },
     detail: function (req, res) {
-        //Ver ejercicios resueltos de pablo. Hay que agregar un error cuando no se encuentra el producto
         const product = productsService.findOneById(req.params.id);
         res.render("products/productDetail", {product});
     },
