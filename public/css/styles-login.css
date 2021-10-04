@@ -1,92 +1,190 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-
-
 
 .contenedor {
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    padding:5px 10px 30px;
-    max-width: 600px;
-    margin:auto;
-    
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-.login-wrapper {
-    height: 100%;
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 10px;
-    border-radius: 10px;
-    background-image: linear-gradient(7deg, #855f1885, #855f186e);
-    box-shadow: 0px 0px 15px 0px grey;
+.form-contenedor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
-.input-wrapper {
-    margin: 5px 0px 5px 0px;
-    display: flex;
+.contenedor::before {
+  content: "";
+  position: absolute;
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 48%;
+  background-image: linear-gradient(-45deg, #20dbc2 0%, #00bfa6 100%);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  z-index: 6;
 }
 
-.input-wrapper input {
-    border-radius: 5px;
-    height: 100%;
-    width: 100%;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5rem;
+  padding: 0 5rem;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
-.login-button {
-    align-self: center;
-    background-color: white;
-    color: #855f18;
-    border: 2px solid #855f18;
-    height: 10%;
-    width: 70%;
-    border-radius: 15px;
+.titulo {
+  font-size: 2.2rem;
+  color: #444;
+  margin-bottom: 10px;
 }
 
-.login-button:hover {
-    background-color: #855f18;
-    color: white;
+.input-field {
+  max-width: 380px;
+  width: 100%;
+  height: 55px;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
 }
 
-.login-link {
-    align-self: center;
-    text-decoration: none;
-    color: white;
+.input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  font-size: 1.5rem;
 }
 
-.font-17{
-    font-size: 17px;
+.input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #333;
 }
 
-.signup-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    align-self: center;
-    width: 95%;
-    max-height: 20px;
+.input-field input:placeholder-shown {
+  color: #aaa;
+  font-weight: 500;
 }
 
-.signup-link p,
-.signup-link a{
-    font-size: 15px;
-    font-weight: normal;
+.btn {
+  width: 150px;
+  height: 49px;
+  outline: none;
+  border: none;
+  border-radius: 48px;
+  background-color: #20dbc2;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  transition: all 0.5s;
 }
 
+.btn:hover {
+  background-color: #00bfa6;
+}
 
-@media (min-width: 768px){
+.social-text {
+  padding: 0.7rem 0;
+}
 
+.social-media {
+  display: flex;
+  justify-content: center;
+}
 
-    
-     .signup-link{
-         width: 70%;
-     }
+.social-icon {
+  height: 46px;
+  width: 46px;
+  border: 1px solid #333;
+  margin: 0 0.45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  transition: all 0.5s;
+}
 
-    
- }
+.social-icon:hover {
+  color: #20dbc2;
+  border-color: #00bfa6;
+}
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
+}
+
+form.login-form {
+  z-index: 2;
+}
+
+.panels-contenedor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 17% 2rem 12%;
+  z-index: 7;
+}
+
+.panel .content {
+  color: #fff;
+}
+
+.panel h3 {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.panel p {
+  font-size: 0.95rem;
+  padding: 0.7rem 0;
+}
+
+.btn.transparent {
+  margin: 0;
+  background: none;
+  border: 2px solid #fff;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
