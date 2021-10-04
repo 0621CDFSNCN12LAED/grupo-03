@@ -27,12 +27,17 @@
                             <input type="text" id="product-quantity" value="1">
                             <button class="btn plus-btn" type="button">+</button>
                         </div>
-                        <div class="product-shopping-cart"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="product-shopping-cart">
+                            <a class="add-cart" href="#">
+                            <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <p class="product-description"><%= product.description %>
                 </p>
             </article>
+        </section>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>

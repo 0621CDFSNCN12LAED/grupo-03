@@ -16,5 +16,5 @@ app.listen(3050, () => {
     console.log('Servidor corriendo en el puerto 3050');
 });
 
-const mainRouter = require("./routes/main-routes.js");
+const mainRouter = require("./routes/main.js");
 app.use("/", mainRouter);
