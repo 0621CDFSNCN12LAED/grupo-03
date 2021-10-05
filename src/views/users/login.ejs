@@ -13,25 +13,36 @@
         <div class="contenedor">
             <div class="form-contenedor">
                 <div class="login">
-                    <form action="#" class="login-form">
+                    <% if (locals.errors) { %> 
+                        <p style = "color:red">ERROR</p>
+                        <ul>
+                            <% for (let error of errors) { %> 
+                                <li><%= error.msg %></li>
+                            <% } %> 
+                        </ul>
+                    <% } %> 
+                    <form action="login" class="login-form" METHOD="POST">
                         <h2 class="titulo">Ingresa</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input 
-                            type="text" 
-                            name="usuario" 
-                            id="usuario"
-                            placeholder="Usuario">
+                            type="email" 
+                            name="email" 
+                            id="email"
+                            placeholder="Email">
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <input 
                             type="password" 
-                            name="contraseña" 
-                            id="contraseña" 
+                            name="password" 
+                            id="password" 
                             placeholder="Contraseña">
                         </div>
-                        <label class="font-17"><input type="checkbox" id="login-checkbox" value="login-checkbox"> Mantener sesión abierta</label>
+                        <label for="recordame" class="font-17">
+                            <input type="checkbox" name="recordame">
+                            Mantener sesión abierta
+                        </label>
                         <input type="submit" class="btn solid" value="Ingresar">
                         <a href="#" class="login-link font-17">¿Olvidaste tu contraseña?</a>
                         <p class="social-text">O Ingresa con redes sociales</p>
