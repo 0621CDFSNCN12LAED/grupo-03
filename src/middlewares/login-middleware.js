@@ -28,7 +28,7 @@ function loginMiddleware (req, res, next) {
             res.cookie("recordame", usuarioALoguearse.email, {maxAge: 60000});
         }
 
-        res.render("index");
+        res.render("users/profile", {user: req.session.usuarioLogueado});
 
     } else {
         next();

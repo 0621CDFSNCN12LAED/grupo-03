@@ -10,6 +10,9 @@ const usersController = {
     },
     register: function (req, res) {
         res.render("users/register", {title: "Morfi-Registro"});
+    },
+    profile: function (req, res) {
+        res.render("users/profile", {user: req.session.usuarioLogueado});
     }
 };
 

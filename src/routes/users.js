@@ -12,4 +12,6 @@ router.post("/login", loginValidation, loginMiddleware, usersController.processL
 
 router.get("/register", usersController.register);
 
+router.get("/profile", usersController.profile);
+
 module.exports = router;
