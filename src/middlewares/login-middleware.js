@@ -12,13 +12,9 @@ function loginMiddleware (req, res, next) {
         let usuarioALoguearse
 
         for (let i = 0; i < users.length; i++) {
-            if (users[i].email == req.body.email) {
-                if (users[i].contraseña == req.body.password 
-                    //bcrypt.compareSync(req.body.password, users[i].password
-                    ) {
-                    usuarioALoguearse = users[i];
-                    break;
-                } 
+            if (users[i].email == req.body.email && users[i].contraseña == req.body.password) {
+                usuarioALoguearse = users[i];
+                break;
             }
         }
 

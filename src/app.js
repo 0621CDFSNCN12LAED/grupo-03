@@ -15,6 +15,9 @@ app.use(session({resave: false, saveUninitialized: true, secret: "Nuestro mensaj
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
+app.use(cookieAuthMiddleware);
+
 const publicPath = path.resolve(__dirname, '../public');
 app.use(express.static(publicPath));
 
