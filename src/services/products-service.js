@@ -5,6 +5,7 @@ const productsFilePath = path.join(__dirname, "../data/products.json");
 const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
 const productsService = {
+    // Agregar a los productos el campo "deleted"
     findAll() {
         const filteredProducts = products.filter((prod) => {
             return !prod.deleted;

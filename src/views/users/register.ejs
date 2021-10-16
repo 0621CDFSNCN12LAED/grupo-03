@@ -9,33 +9,71 @@
         <%- include("../partials/header.ejs") %>
     </header>
     <main>
-        <div class="contenedor">
-            <div class="register-wrapper">
-                <h2>Registro</h2>
-                <div class="input-wrapper">
-                    <input 
-                    type="mail" 
-                    name="email" 
-                    id="usuario"
-                    placeholder="Email">
+        <section>            
+            <div class="contenedor">
+                <div class="register-wrapper">
+                    <div class="title">Registro</div>
+                    <form action="/users" method="POST" enctype="multipart/form-data">
+                        <div class="input-wrapper">
+                            <label for="first_name"></label>
+                            <input 
+                            type="text" 
+                            name="first_name" 
+                            id="first_name"
+                            placeholder="Nombre">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="last_name"></label>
+                            <input 
+                            type="text" 
+                            name="last_name" 
+                            id="last_name"
+                            placeholder="Apellido">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="user-image"></label>
+                            <input 
+                            type="file" 
+                            name="user-image" 
+                            id="user-image">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="address"></label>
+                            <input 
+                            type="text" 
+                            name="address" 
+                            id="address"
+                            placeholder="Direccion">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="email"></label>
+                            <input 
+                            type="mail"
+                            name="email" 
+                            id="email"
+                            placeholder="Email">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="password"></label>
+                            <input 
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            placeholder="Contraseña">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="password2"></label>
+                            <input 
+                            type="password" 
+                            name="password2" 
+                            id="password2" 
+                            placeholder="Repetir contraseña">
+                        </div>
+                        <button type="submit" class="register-button">Crea tu cuenta</button>
+                    </form>
                 </div>
-                <div class="input-wrapper">
-                    <input 
-                    type="text" 
-                    name="usuario" 
-                    id="usuario" 
-                    placeholder="Usuario">
-                </div>
-                <div class="input-wrapper">
-                    <input 
-                    type="password" 
-                    name="contraseña" 
-                    id="contraseña" 
-                    placeholder="Contraseña">
-                </div>
-                <button type="submit" class="register-button">Crea tu cuenta</button>
             </div>
-        </div>
+        </section>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>

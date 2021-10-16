@@ -27,7 +27,7 @@
 }
 
 .input-wrapper {
-    margin: 5px 0px 5px 0px;
+    margin: 10px 0px 10px 0px;
     display: flex;
 }
 
@@ -45,6 +45,7 @@
     height: 10%;
     width: 70%;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .register-button:hover {
