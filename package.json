@@ -4,14 +4,16 @@
   "description": "1\tNombre del Proyecto: A definir",
   "main": "app.js",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "express-validator": "^6.12.2",
     "multer": "^1.4.3"
   },
   "scripts": {
-    "start": "nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",

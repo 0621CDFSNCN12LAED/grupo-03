@@ -37,3 +37,15 @@ Hacer mas : Cambiar el productCart, mejorar los estilos de las vistas, basarse
 Hacer menos: Comunicarse por whatsapp
 
 Dejar de hacer:
+
+Retrospectiva sprint 4:
+
+Comenzar a hacer: boceto del sitio, mejorar el login y el register, mejorar el productCart y ver su implementacion y agregar un error cuando no se encuentra el producto
+
+Seguir haciendo: La división de tareas
+
+Hacer mas : Mejorar los estilos de las vistas, basarse en los sitios que elegimos como referencia y hacer reuniones
+
+Hacer menos: Comunicarse por whatsapp
+
+Dejar de hacer: Dejar tareas para el final

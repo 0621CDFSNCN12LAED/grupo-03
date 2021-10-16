@@ -9,68 +9,68 @@
         <%- include("../partials/header.ejs") %>
     </header>
     <main>
-        <section>            
-            <div class="contenedor">
-                <div class="register-wrapper">
-                    <div class="title">Registro</div>
-                    <form action="/users" method="POST" enctype="multipart/form-data">
-                        <div class="input-wrapper">
-                            <label for="first_name"></label>
+        <div class="contenedor">
+            <div class="form-contenedor">
+                <div class="register">
+                    <form action="#" class="register-form">
+                        <h2 class="titulo">Registrate</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
                             <input 
                             type="text" 
-                            name="first_name" 
-                            id="first_name"
-                            placeholder="Nombre">
+                            name="username" 
+                            id="username"
+                            placeholder="Usuario">
                         </div>
-                        <div class="input-wrapper">
-                            <label for="last_name"></label>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
                             <input 
-                            type="text" 
-                            name="last_name" 
-                            id="last_name"
-                            placeholder="Apellido">
-                        </div>
-                        <div class="input-wrapper">
-                            <label for="user-image"></label>
-                            <input 
-                            type="file" 
-                            name="user-image" 
-                            id="user-image">
-                        </div>
-                        <div class="input-wrapper">
-                            <label for="address"></label>
-                            <input 
-                            type="text" 
-                            name="address" 
-                            id="address"
-                            placeholder="Direccion">
-                        </div>
-                        <div class="input-wrapper">
-                            <label for="email"></label>
-                            <input 
-                            type="mail"
+                            type="email" 
                             name="email" 
                             id="email"
                             placeholder="Email">
                         </div>
-                        <div class="input-wrapper">
-                            <label for="password"></label>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
                             <input 
                             type="password" 
                             name="password" 
                             id="password" 
                             placeholder="Contraseña">
                         </div>
-                        <div class="input-wrapper">
-                            <label for="password2"></label>
-                            <input 
-                            type="password" 
-                            name="password2" 
-                            id="password2" 
-                            placeholder="Repetir contraseña">
+                        <div class="user-img">
+                            <label for="profile-img">Foto de usuario</label>
+                            <input type="file" name="profile-img" id="profile-img" accept="image/png,image/jpeg">
                         </div>
-                        <button type="submit" class="register-button">Crea tu cuenta</button>
+                        <input type="submit" class="btn solid" value="Registrar">
+                        <p class="social-text">O Registrate con redes sociales</p>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </form>
+                </div>
+            </div>
+            <div class="panels-contenedor">
+                <div class="panel">
+                    <div class="content">
+                        <h3>¿Uno de nosotros?</h3>
+                        <a href="/users/login">
+                            <button class="btn transparent" id="sign-in-button" >
+                                Ingresa
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -78,6 +78,5 @@
     <footer>
         <%- include("../partials/footer.ejs") %>
     </footer>
-  
-  </body>
-  </html>
+</body> 
+</html>

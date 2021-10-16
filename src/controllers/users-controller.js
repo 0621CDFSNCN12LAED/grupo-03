@@ -1,6 +1,4 @@
-const usersService = require("../services/users-service");
-const { validationResult } = require('express-validator');
-
+const {validationResult} = require("express-validator");
 
 const usersController = {
     user: function (req, res) {
@@ -9,21 +7,15 @@ const usersController = {
     login: function (req, res) {
         res.render("users/login", {title: "Morfi-Login"});
     },
+    processLogin: (req, res) => { 
+        const errors = validationResult(req);   
+        res.render("users/login", {errors: errors.array()});
+    },
     register: function (req, res) {
         res.render("users/register", {title: "Morfi-Registro"});
     },
-    create: function (req, res) {
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            let newUser = {
-                image: req.file.filename,
-                ...req.body
-            }
-            usersService.createOne(newUser, req.file);
-            res.redirect("/users");
-        } else {
-            res.redirect("users/register", );
-        }
+    profile: function (req, res) {
+        res.render("users/profile", {user: req.session.usuarioLogueado});
     }
 };
 
