@@ -898,5 +898,14 @@
     "contraseña": "sNE2sBij0V7t",
     "Address": "08921 Esch Plaza",
     "preferences": [{}, {}, {}]
+  },
+  {
+    "id": 101,
+    "first_name": "admin",
+    "last_name": "admin",
+    "email": "admin@morfi.com",
+    "contraseña": "12345678",
+    "Address": "08921 Esch Plaza",
+    "preferences": [{}, {}, {}]
   }
 ]
