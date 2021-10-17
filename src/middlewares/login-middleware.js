@@ -12,9 +12,13 @@ function loginMiddleware (req, res, next) {
         let usuarioALoguearse
 
         for (let i = 0; i < users.length; i++) {
-            if (users[i].email == req.body.email && users[i].contraseña == req.body.password) {
-                usuarioALoguearse = users[i];
-                break;
+            if (users[i].email == req.body.email) {
+                if (users[i].contraseña == req.body.password 
+                    //bcrypt.compareSync(req.body.password, users[i].password
+                    ) {
+                    usuarioALoguearse = users[i];
+                    break;
+                } 
             }
         }
 
@@ -24,11 +28,13 @@ function loginMiddleware (req, res, next) {
 
         req.session.usuarioLogueado = usuarioALoguearse;
 
+        req.session.usuarioLogged=usuarioALoguearse.email;
+
         if (req.body.recordame != undefined) {
             res.cookie("recordame", usuarioALoguearse.email, {maxAge: 60000});
         }
 
-        res.render("users/profile", {user: req.session.usuarioLogueado});
+        res.render("index");
 
     } else {
         next();

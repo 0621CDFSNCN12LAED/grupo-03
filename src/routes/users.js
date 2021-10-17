@@ -7,11 +7,10 @@ const loginValidation = require("../validations/login-validation");
 
 const loginMiddleware = require("../middlewares/login-middleware");
 
-router.get("/login", usersController.login);
+const authLoggedMiddleware = require("../middlewares/auth-logged-middleware")
+router.get("/login", authLoggedMiddleware,usersController.login);
 router.post("/login", loginValidation, loginMiddleware, usersController.processLogin);
 
-router.get("/register", usersController.register);
-
-router.get("/profile", usersController.profile);
+router.get("/register",authLoggedMiddleware, usersController.register);
 
 module.exports = router;

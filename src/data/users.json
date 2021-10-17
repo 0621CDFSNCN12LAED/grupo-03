@@ -97,4 +97,5 @@
 {"id":97,"first_name":"Mallissa","last_name":"Slaney","email":"mslaney2o@homestead.com","contraseña":"2wgAKwGM","Address":"429 Mallard Parkway","preferences":[{},{},{}]},
 {"id":98,"first_name":"Bettina","last_name":"Matley","email":"bmatley2p@eventbrite.com","contraseña":"bMIFJFj","Address":"904 Spenser Pass","preferences":[{},{}]},
 {"id":99,"first_name":"Ansley","last_name":"Hair","email":"ahair2q@independent.co.uk","contraseña":"N5SIlZlr1g","Address":"1180 Hermina Drive","preferences":[{}]},
-{"id":100,"first_name":"Minta","last_name":"Gleed","email":"mgleed2r@is.gd","contraseña":"sNE2sBij0V7t","Address":"08921 Esch Plaza","preferences":[{},{},{}]}]
+{"id":100,"first_name":"Minta","last_name":"Gleed","email":"mgleed2r@is.gd","contraseña":"sNE2sBij0V7t","Address":"08921 Esch Plaza","preferences":[{},{},{}]},
+{"id":101,"first_name":"admin","last_name":"admin","email":"admin@morfi.com","contraseña":"12345678","Address":"08921 Esch Plaza","preferences":[{},{},{}]}]
