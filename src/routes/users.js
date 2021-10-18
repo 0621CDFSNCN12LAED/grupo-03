@@ -24,9 +24,10 @@ const uploader = multer({ storage });
 const loginMiddleware = require("../middlewares/login-middleware");
 
 const authLoggedMiddleware = require("../middlewares/auth-logged-middleware");
+const authGuestMiddleware = require("../middlewares/auth-guest-middleware");
 
 // rutas de login
-router.get("/login", authLoggedMiddleware, usersController.login);
+router.get("/login", authGuestMiddleware, usersController.login);
 router.post(
   "/login",
   loginValidation,
@@ -35,7 +36,7 @@ router.post(
 );
 
 // rutas de registro
-router.get("/register", authLoggedMiddleware, usersController.register);
+router.get("/register", authGuestMiddleware, usersController.register);
 router.post(
   "/register",
   registerValidation,
@@ -43,5 +44,7 @@ router.post(
   uploader.single("image"),
   usersController.processRegister
 );
+
+router.get("/profile", authLoggedMiddleware, usersController.profile);
 
 module.exports = router;

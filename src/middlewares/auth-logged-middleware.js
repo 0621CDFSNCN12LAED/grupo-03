@@ -1,9 +1,8 @@
-
 const authLoggedMiddleware= (req,res, next)=>{
- if (req.session.usuarioLogueado==undefined){
+ if (req.session.usuarioLogueado){
     next();
  }
-   else {res.redirect("../")}
+   else {res.redirect("/users/login")}
 };
 
 
