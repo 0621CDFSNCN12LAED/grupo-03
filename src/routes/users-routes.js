@@ -4,6 +4,14 @@ const multer = require("multer");
 const path = require("path");
 const { body } = require("express-validator");
 
+
+// !!!!!!
+
+// ARCHIVO OBSOLETO - USAR users.js EN LUGAR DE ESTE
+
+// !!!!!!
+
+
 //validaciones
 const validateUserForm = [
     body('first_name').notEmpty().withMessage('Nombre no puede estar vacio'),

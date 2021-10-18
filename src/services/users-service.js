@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const usersFilePath = path.join(__dirname, "../data/users.json");
 const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
@@ -24,20 +25,23 @@ const usersServices = {
         return userFound
     },
 
-    createOne(payload, image) {
+    createOne: (payload, image) => {
         const lastUser = users[users.length - 1];
         const biggestUserId = users.length > 0 ? lastUser.id : 1;
+        delete payload.password2;
         const user = {
             id: biggestUserId + 1,
-            name: payload.first_name,
-            ...payload,
+            name: payload.username,
+            email: payload.email,
+            constraseña: bcrypt.hashSync(payload.password, 12),
             image: image ? "/images/user-images/" + image.filename : "/images/user-images/default.jpg"
         };
         users.push(user);
-        this.save();
+        const jsonString = JSON.stringify(users, null, 4);
+        fs.writeFileSync(usersFilePath, jsonString);
     },
 
-    editOne(id, payload, image) {
+    editOne: (id, payload, image) => {
         const user = this.findByPk(id);
         user.first_name = payload.first_name;
         user.last_name = payload.last_name;
