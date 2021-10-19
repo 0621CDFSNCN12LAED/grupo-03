@@ -12,7 +12,7 @@
         <div class="contenedor">
             <div class="form-contenedor">
                 <div class="register">
-                    <form action="register" class="register-form" method="post">
+                    <form action="register" class="register-form" method="post" enctype="multipart/form-data">
                         <h2 class="titulo">Registrate</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -38,6 +38,14 @@
                             id="password" 
                             placeholder="Contraseña">
                         </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                            type="password" 
+                            name="password2" 
+                            id="password2" 
+                            placeholder="Repetir contraseña">
+                        </div>
                         <div class="user-img">
                             <label for="image">Foto de usuario</label>
                             <input type="file" name="image" id="image" accept="image/*">
@@ -59,18 +67,6 @@
                             </a>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div class="panels-contenedor">
-                <div class="panel">
-                    <div class="content">
-                        <h3>¿Uno de nosotros?</h3>
-                        <a href="/users/login">
-                            <button class="btn transparent" id="sign-up-button" >
-                                Ingresa
-                            </button>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>

@@ -39,9 +39,9 @@ router.post(
 router.get("/register", authGuestMiddleware, usersController.register);
 router.post(
   "/register",
+  uploader.single("image"),
   registerValidation,
   assertValidations,
-  uploader.single("image"),
   usersController.processRegister
 );
 
