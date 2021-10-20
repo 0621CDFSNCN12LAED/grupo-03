@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+main {
+  background-color: #009e47;
+}
+
 .contenedor {
   position: relative;
   width: 100%;

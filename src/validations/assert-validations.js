@@ -1,13 +1,13 @@
-const { validationResult, Result } = require("express-validator")
+const { validationResult } = require("express-validator")
 
 module.exports = (req, res, next) => {
 
-    const result = validationResult(req);
+    const errors = validationResult(req);
 
-    if(result.isEmpty()){
+    if(errors.isEmpty()){
         next();
     } else {
-        // TODO: enviar los erroes de validacion
+        //Enviar errores => {errors: errors.array()}
         res.redirect("back");
     }
 

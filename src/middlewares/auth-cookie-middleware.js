@@ -1,24 +1,17 @@
-const path = require("path");
-const fs = require("fs");
+const usersService = require("../services/users-service");
 
-function cookieAuthMiddleware (req, res, next) {
+module.exports = (req, res, next) => {
+
+    if (req.cookies.rememberUserId != undefined && req.session.loggedUserId == undefined) {
+        
+        const id = req.cookies.rememberUserId;
+
+        const user = usersService.findByPk(id);
+        
+        req.session.loggedUserId = user.id;
+
+    }
+
     next();
 
-    if (req.cookies.recordame != undefined && req.session.usuarioLogueado == undefined) {
-        const usersFilePath = path.join(__dirname, '../data/users.json');
-        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-    
-        let usuarioALoguearse
-
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].email == req.cookies.recordame) {
-                usuarioALoguearse = users[i];
-                 break; 
-            }
-        }
-
-        req.session.usuarioLogueado = usuarioALoguearse;
-    }
 }
-
-module.exports = cookieAuthMiddleware;

@@ -1,12 +1,15 @@
+const authAdminMiddleware = (req,res, next) => {
 
-const authAdminMiddleware= (req,res, next)=>{
- if (req.session.usuarioLogged =="admin@morfi.com"){
-    next();
- }
-   else {res.redirect("../")}
+   if (req.session.loggedUserId == 101) {
+
+      next();
+
+   } else {
+
+      res.redirect("back");
+
+   }
+
 };
 
-
-
-
-module.exports= authAdminMiddleware
+module.exports= authAdminMiddleware;

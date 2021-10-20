@@ -1,4 +1,3 @@
-const {validationResult} = require("express-validator");
 const usersServices = require("../services/users-service");
 
 const usersController = {
@@ -8,9 +7,29 @@ const usersController = {
     login: function (req, res) {
         res.render("users/login", {title: "Morfi-Login"});
     },
-    processLogin: (req, res) => { 
-        const errors = validationResult(req);   
-        res.render("users/login", {errors: errors.array()});
+    processLogin: (req, res) => {
+        
+        const user = usersServices.getByEmail(req.body.email);
+
+        if (!user) {
+            res.render("users/login", {errors: [{msg: "Credenciales invalidas"}]});
+            return;
+        }
+
+        /*!bcrypt.compareSync(req.body.password, user.contraseña)*/
+        if (user.contraseña != req.body.password) {
+            res.render("users/login", {errors: [{msg: "Credenciales invalidas"}]});
+            return;
+        }
+
+        req.session.loggedUserId = user.id;
+
+        if (req.body.rememberUser != undefined) {
+            res.cookie("rememberUserId", user.id, {maxAge: 60000});
+        }
+
+        res.render("users/profile", {user: user});
+
     },
     register: function (req, res) {
         res.render("users/register", {title: "Morfi-Registro"});
@@ -20,7 +39,7 @@ const usersController = {
         res.redirect("login");
     },
     profile: function (req, res) {
-        res.render("users/profile", {user: req.session.usuarioLogueado});
+        res.render("users/profile");
     }
 };
 

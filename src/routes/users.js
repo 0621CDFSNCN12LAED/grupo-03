@@ -21,8 +21,6 @@ const storage = multer.diskStorage({
 const uploader = multer({ storage });
 //
 
-const loginMiddleware = require("../middlewares/login-middleware");
-
 const authLoggedMiddleware = require("../middlewares/auth-logged-middleware");
 const authGuestMiddleware = require("../middlewares/auth-guest-middleware");
 
@@ -31,7 +29,7 @@ router.get("/login", authGuestMiddleware, usersController.login);
 router.post(
   "/login",
   loginValidation,
-  loginMiddleware,
+  assertValidations,
   usersController.processLogin
 );
 

@@ -23,9 +23,9 @@ app.use(cookieAuthMiddleware);
 const publicPath = path.resolve(__dirname, '../public');
 app.use(express.static(publicPath));
 
+const mainRouter = require("./routes/main.js");
+app.use("/", mainRouter);
+
 app.listen(3050, () => {
     console.log('Servidor corriendo en el puerto 3050');
 });
-
-const mainRouter = require("./routes/main.js");
-app.use("/", mainRouter);

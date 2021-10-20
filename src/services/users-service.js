@@ -12,10 +12,17 @@ const usersServices = {
     },
 
     findByPk: (id) => {
-        const userFound = users.find((user) => {
-            return user.id === id
+        return users.find((user) => {
+            return user.id == id
         });
-        return userFound;
+    },
+
+    getByEmail: (email) => {
+
+        return users.find((user) => {
+            return user.email == email
+        });
+        
     },
 
     findByField: (field, text) => {

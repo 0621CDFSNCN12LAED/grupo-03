@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/styles-login.css">
 </head>
 <body>
     <header>
@@ -10,7 +9,7 @@
     </header>
 
     <main>
-       <p>Tu email es: <%= user.email %> </p> 
+       <p>Bienvenido: <%= locals.user.first_name %> <%= locals.user.last_name %> </p> 
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>

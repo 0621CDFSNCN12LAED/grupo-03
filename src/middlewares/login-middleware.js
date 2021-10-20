@@ -1,44 +1,26 @@
-const {validationResult} = require("express-validator");
-const path = require("path");
-const fs = require("fs");
+const usersService = require("../services/users-service");
 
-function loginMiddleware (req, res, next) {
-    const errors = validationResult(req);
+module.exports = async (req, res, next) => {
 
-    if (errors.isEmpty()) {
-        const usersFilePath = path.join(__dirname, '../data/users.json');
-        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-        
-        let usuarioALoguearse
+  const id = req.session.loggedUserId;
 
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].email == req.body.email) {
-                if (users[i].contraseña == req.body.password 
-                    //bcrypt.compareSync(req.body.password, users[i].password
-                    ) {
-                    usuarioALoguearse = users[i];
-                    break;
-                } 
-            }
-        }
+  if (id) {
 
-        if (usuarioALoguearse == undefined) {
-            return res.render("users/login", {errors: [{msg: "Usuario invalido"}]});
-        }
+    const user = await usersService.findByPk(id);
 
-        req.session.usuarioLogueado = usuarioALoguearse;
+    if (user) {
 
-        req.session.usuarioLogged=usuarioALoguearse.email;
-
-        if (req.body.recordame != undefined) {
-            res.cookie("recordame", usuarioALoguearse.email, {maxAge: 60000});
-        }
-
-        res.render("users/profile", {user: req.session.usuarioLogueado});
+      req.user = user;
+      res.locals.user = user;
 
     } else {
-        next();
-    }
-}
 
-module.exports = loginMiddleware;
+      req.session.loggedUserId = null;
+
+    }
+
+  }
+
+  next();
+
+};
