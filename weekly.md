@@ -24,3 +24,11 @@ Si se encontró con algún impedimento: Nos dimos cuenta de que debemos cambiar 
 
 Que va hacer hoy: Realizar una breve retrospectiva del sprint 3, Implementar daily/
 weekly standups, y revisar el CRUD de productos para que este listo para la entrega del sprint
+
+19/10/2021
+
+Que hizo ayer: Finalizar login y registro de usuario
+
+Si se encontró con algún impedimento: Tuvimos dificultades con la sesion de usuario al re estructurar el login, que pudimos resolver
+
+Que va hacer hoy: Implementar daily/weekly standups, y revisar el assert validation
