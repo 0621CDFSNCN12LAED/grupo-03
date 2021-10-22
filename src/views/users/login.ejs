@@ -13,14 +13,6 @@
         <div class="contenedor">
             <div class="form-contenedor">
                 <div class="login">
-                    <% if (locals.errors) { %> 
-                        <p style = "color:red">ERROR</p>
-                        <ul>
-                            <% for (let error of errors) { %> 
-                                <li><%= error.msg %></li>
-                            <% } %> 
-                        </ul>
-                    <% } %> 
                     <form action="login" class="login-form" METHOD="POST">
                         <h2 class="titulo">Ingresa</h2>
                         <div class="input-field">
@@ -72,6 +64,14 @@
                                 Registrate
                             </button>
                         </a>
+                        <% if (locals.errors) { %> 
+                            <p style = "color:red">ERROR</p>
+                            <ul>
+                                <% for (let error of errors) { %> 
+                                    <li><%= error.msg %></li>
+                                <% } %> 
+                            </ul>
+                        <% } %> 
                     </div>
                 </div>
             </div>

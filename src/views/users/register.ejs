@@ -20,7 +20,7 @@
                             type="text" 
                             name="username" 
                             id="username"
-                            placeholder="Usuario">
+                            placeholder="Nombre">
                         </div>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
@@ -37,14 +37,6 @@
                             name="password" 
                             id="password" 
                             placeholder="Contraseña">
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input 
-                            type="password" 
-                            name="password2" 
-                            id="password2" 
-                            placeholder="Repetir contraseña">
                         </div>
                         <div class="user-img">
                             <label for="image">Foto de usuario</label>
@@ -78,6 +70,14 @@
                                 Ingresa
                             </button>
                         </a>
+                        <% if (locals.errors) { %> 
+                            <p style = "color:red">ERROR</p>
+                            <ul>
+                                <% for (let error of errors) { %> 
+                                    <li><%= error.msg %></li>
+                                <% } %> 
+                            </ul>
+                        <% } %> 
                     </div>
                 </div>
             </div>

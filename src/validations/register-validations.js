@@ -1,19 +1,19 @@
 const { body } = require("express-validator");
 
 module.exports = [
-  body("username").notEmpty().withMessage("Campo no puede estar vacio"),
+  body("username")
+    .notEmpty()
+    .withMessage("Debes completar el Nombre"),
   body("email")
     .notEmpty()
-    .withMessage("Campo no puede estar vacio")
+    .withMessage("Debes completar el Email")
     .bail()
     .isEmail()
-    .withMessage("Campo debe ser un email"),
+    .withMessage("Email invalido"),
   body("password")
     .notEmpty()
-    .withMessage("Campo no puede estar vacio")
+    .withMessage("Debes completar la Contraseña")
     .bail()
-    .custom((value, { req }) => {
-        return value == req.body.password2
-    })
-    .withMessage("La contraseña debe coincidir"),
+    .isLength({min:8})
+    .withMessage("La Contraseña debe ser mas larga")
 ];
