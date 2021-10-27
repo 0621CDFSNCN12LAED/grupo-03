@@ -35,13 +35,12 @@ const usersServices = {
     createOne: (payload, image) => {
         const lastUser = users[users.length - 1];
         const biggestUserId = users.length > 0 ? lastUser.id : 1;
-        delete payload.password2;
         const user = {
             id: biggestUserId + 1,
-            name: payload.username,
+            username: payload.username,
             email: payload.email,
-            constraseña: bcrypt.hashSync(payload.password, 12),
-            image: image ? "/images/user-images/" + image.filename : "/images/user-images/default.jpg"
+            password: bcrypt.hashSync(payload.password, 12),
+            image: image ? "/images/users/" + image.filename : "/images/users/default-user.jpg"
         };
         users.push(user);
         const jsonString = JSON.stringify(users, null, 4);
