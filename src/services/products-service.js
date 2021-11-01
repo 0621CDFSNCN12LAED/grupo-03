@@ -44,7 +44,7 @@ const productsService = {
             ...payload,
             weight: Number(payload.weight),
             price: Number(payload.price),
-            image: image ? "/images/productos/" + image.filename : "logo_fondo_verde.jpg"
+            image: image ? "/images/products/" + image.filename : "logo_fondo_verde.jpg"
         };
         products.push(product);
         this.save();
@@ -55,6 +55,7 @@ const productsService = {
         product.name = payload.name;
         product.description = payload.description;
         product.category = payload.category;
+        product.weight = Number(payload.weight);
         product.price = Number(payload.price);
         product.image = image ? image.filename : product.image;
         this.save();

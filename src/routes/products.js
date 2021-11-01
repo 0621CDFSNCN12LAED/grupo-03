@@ -5,7 +5,7 @@ const path = require("path");
 
 const authAdminMiddleware = require("../middlewares/auth-admin-middleware")
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, "../../public/images/productos"),
+    destination: path.join(__dirname, "../../public/images/products"),
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
     }
@@ -34,7 +34,8 @@ router.get("/:id/edit",authAdminMiddleware, productsController.edit);
 router.put("/:id", productsController.update);
 
 //Borrar un producto
-router.delete("/:id",authAdminMiddleware, productsController.destroy);
+router.get("/:id/delete", authAdminMiddleware, productsController.delete);
+router.delete("/:id", productsController.destroy);
 
 
 module.exports = router;

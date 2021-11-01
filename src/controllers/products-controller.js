@@ -31,6 +31,10 @@ const productsController = {
         productsService.editOne(req.params.id, req.body, req.file);
         res.redirect("/products");
     },
+    delete: function (req, res) {
+        const product = productsService.findOneById(req.params.id);
+        res.render("products/productDelete", {product});
+    },
     destroy: function (req, res) {
         productsService.destroyOne(req.params.id);
         res.redirect("/products");

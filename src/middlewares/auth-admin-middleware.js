@@ -1,6 +1,6 @@
 const authAdminMiddleware = (req,res, next) => {
 
-   if (req.session.loggedUserId == 101) {
+   if (req.session.loggedUserId == 1) {
 
       next();
 
