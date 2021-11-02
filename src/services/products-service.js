@@ -1,20 +1,97 @@
+const { Product } = require("../database/models");
+
+const productsService = {
+
+    getById: async (id) => {
+
+        return await Product.findByPk(id);
+
+    },
+
+    findAll: async () => {
+
+        return await Product.findAll();
+
+    },
+
+    findRandom: async () => {
+
+        let indexProducts = [];
+        const filteredProducts = await Product.findAll();
+        const maxProducts = 8;
+        for (let i = 0; i < maxProducts; i++){
+            const randomIndex = Math.floor(Math.random() * (filteredProducts.length));
+            indexProducts.push(filteredProducts[randomIndex])
+        };
+        return indexProducts;
+
+    },
+
+    filterByCategory: async (category) => {
+
+        return await Product.findAll({
+            include: [{where: {productCategory : category}}]
+        });
+
+    },
+
+    create: async (payload, img) => {
+
+        await Product.create({
+            ...payload,
+            password: bcrypt.hashSync(payload.password, 12),
+            image: img ? "/images/products/" + image.filename : "logo_fondo_verde.jpg"
+        });
+
+    },
+
+    edit: async (id, payload, img) => {
+
+        await Product.update(
+            {
+                ...payload, 
+                image: img ? img.filename : img,
+            },
+            {
+                where: {id: id,},
+            }
+        );
+
+    },
+
+    delete: async (id) => {
+
+        await Movie.destroy({
+            where: {
+                id: id,
+            },
+        });
+
+    }
+
+};
+
+module.exports = productsService;
+/*
 const fs = require("fs");
 const path = require("path");
-
-const { Product } = require("../database/models");
 
 const productsFilePath = path.join(__dirname, "../data/products.json");
 const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
-const productsService = {
-    // Agregar a los productos el campo "deleted"
+const productsJsonService = {
+    
     findAll() {
+
         const filteredProducts = products.filter((prod) => {
             return !prod.deleted;
         });
         return filteredProducts;
+
     },
+
     findRandom() {
+
         let indexProducts = [];
         const filteredProducts = this.findAll();
         const maxProducts = 8;
@@ -23,22 +100,28 @@ const productsService = {
             indexProducts.push(filteredProducts[randomIndex])
         };
         return indexProducts;
+
     },
 
     filterByCategory(category) {
+
         return this.findAll().filter((prod) => {
             return prod.category.toLowerCase() == category;
         });
+
     },
 
     findOneById(id) {
+
         const product = products.find((prod) => {
             return prod.id == id;
         });
         return product;
+
     },
 
     createOne(payload, image) {
+
         const lastProduct = products[products.length - 1];
         const biggestProductId = products.length > 0 ? lastProduct.id : 1;
         const product = {
@@ -50,9 +133,11 @@ const productsService = {
         };
         products.push(product);
         this.save();
+
     },
 
     editOne(id, payload, image) {
+
         const product = this.findOneById(id);
         product.name = payload.name;
         product.description = payload.description;
@@ -61,75 +146,23 @@ const productsService = {
         product.price = Number(payload.price);
         product.image = image ? image.filename : product.image;
         this.save();
+
     },
 
     destroyOne(id) {
+
         const product = this.findOneById(id);
         product.deleted = true;
         this.save();
+
     },
 
     save() {
+
         const jsonString = JSON.stringify(products, null, 4);
         fs.writeFileSync(productsFilePath, jsonString);
-    },
-};
 
-module.exports = productsService;
-
-/*
-module.exports = {
-
-  getById: async (id) => {
-
-    return await Product.findByPk(id, {
-      include: [{association: "categoria_de_producto"}]
-    });
-
-  },
-
-  getAll: async () => {
-
-    return await Product.findAll();
-
-  },
-
-  getByCategory: async (category) => {
-
-    return await Product.findAll({
-      include: [{association: "categoria_de_producto"}]
-    });
-
-  },
-
-  create: async (requestBody) => {
-
-    await Product.create({
-      ...requestBody,
-      password: bcrypt.hashSync(requestBody.password, 12),
-    });
-
-  },
-
-  edit: async (requestBody) => {
-
-    await Product.update(requestBody, {
-      where: {
-        id: req.params.id,
-      },
-    });
-
-  },
-
-  delete: async (id) => {
-
-    await Movie.destroy({
-      where: {
-        id: id,
-      },
-    });
-
-  }
+    }
 
 };
 */

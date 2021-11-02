@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 
 const usersController = {
 
-    user: function (req, res) {
+    profile: function (req, res) {
 
         res.render("users/profile", {title: "Morfi-Perfil"});
 
@@ -16,13 +16,13 @@ const usersController = {
 
     },
 
-    processLogin: (req, res) => {
+    processLogin: async (req, res) => {
 
         const errors = validationResult(req);
         
         if ( errors.isEmpty() ) {
         
-            const user = usersServices.getByEmail(req.body.email);
+            const user = await usersServices.getByEmail(req.body.email);
 
             if (!user) {
                 res.render("users/login", {errors: [{msg: "Credenciales invalidas"}]});
@@ -40,7 +40,7 @@ const usersController = {
                 res.cookie("rememberUserId", user.id, {maxAge: 60000});
             }
 
-            res.render("users/profile", {user: user});
+            res.redirect("/users/profile");
 
         } else {
 
@@ -56,13 +56,13 @@ const usersController = {
 
     },
 
-    processRegister: function (req, res) {
+    processRegister: async (req, res) => {
 
         const errors = validationResult(req);
 
         if( errors.isEmpty() ) {
 
-            usersServices.createOne(req.body, req.file);
+            await usersServices.createOne(req.body, req.file);
             res.redirect("login");
 
         } else {
@@ -70,6 +70,19 @@ const usersController = {
             res.render("users/register", {errors: errors.array()});
 
         }
+
+    },
+
+    edit: (req, res) => {
+
+        res.render("users/editProfile");
+
+    },
+
+    update: async (req, res) => {
+
+        await usersServices.edit(req.params.id, req.body, req.file);
+        res.redirect("profile");
 
     }
 

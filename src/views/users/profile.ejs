@@ -7,9 +7,9 @@
     <header>
         <%- include("../partials/header.ejs") %>
     </header>
-
     <main>
-       <p>Bienvenido: <%= locals.user.username %> </p> 
+       <p>Bienvenido: <%= locals.user.firstName %> <%= locals.user.lastName %></p> 
+       <a href="/users/profile/edit">Editar perfil</a>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>

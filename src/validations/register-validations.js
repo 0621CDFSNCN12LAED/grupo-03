@@ -1,9 +1,12 @@
 const { body } = require("express-validator");
 
 module.exports = [
-  body("username")
+  body("firstName")
     .notEmpty()
-    .withMessage("Debes completar el Nombre"),
+    .withMessage("Debes completar tu Nombre"),
+  body("lastName")
+    .notEmpty()
+    .withMessage("Debes completar tu Apellido"),
   body("email")
     .notEmpty()
     .withMessage("Debes completar el Email")

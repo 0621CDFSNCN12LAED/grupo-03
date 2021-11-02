@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+<body>
+    <header>
+        <%- include("../partials/header.ejs") %>
+    </header>
+
+    <main>
+        <h1>Editar perfil</h1>
+        <h2><%= locals.user.firstName %> <%= locals.user.lastName %></h2>
+        <form action="/users/<%= locals.user.id %>?_method=PUT" method="POST">
+    
+            <div class="input-box">
+                <label for="firstName">Nombre</label>
+                <input type="text" name="firstName" id="firstName" value="<%= locals.user.firstName %>" >
+            </div>
+            <div class="input-box">
+                <label for="lastName">Apellido</label>
+                <input type="text" name="lastName" id="lastName" value="<%= locals.user.lastName %>" >
+            </div>
+            <div class="input-box">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" >
+            </div>
+            <div class="input-box">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" >
+            </div>
+            <div class="input-box">
+                <label for="image">Imagen</label>
+                <input type="file" name="image" id="image" accept="image/*" value="<%= locals.user.image %>"> 
+            </div>
+            <div class="button-container">
+                <div class="button">
+                    <input type="submit" value="Guardar">
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <%- include("../partials/footer.ejs") %>
+    </footer>
+</body>
+</html>

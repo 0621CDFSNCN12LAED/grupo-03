@@ -42,6 +42,9 @@ router.post(
   usersController.processRegister
 );
 
-router.get("/profile", authLoggedMiddleware, usersController.user);
+//profile
+router.get("/profile", authLoggedMiddleware, usersController.profile);
+router.get("/profile/edit", authLoggedMiddleware, usersController.edit);
+router.put("/:id", uploader.single("image"), usersController.update);
 
 module.exports = router;

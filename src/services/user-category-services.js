@@ -2,18 +2,18 @@ const { UserCategory } = require("../database/models");
 
 module.exports = {
 
-    getById: async (id) => {
-  
-      return await UserCategory.findByPk(id, {
-        include: [{association: "usuarios"}]
-      });
-  
-    },
+  getById: async (id) => {
 
-    getAll: async () => {
-  
-        return await UserCategory.findAll();
-    
-    }
+    return await UserCategory.findByPk(id, {
+      include: [{association: "usuarios"}]
+    });
+
+  },
+
+  getAll: async () => {
+
+    return await UserCategory.findAll();
+
+  }
 
 };
