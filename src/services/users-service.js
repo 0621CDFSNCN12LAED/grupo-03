@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 
+const { User } = require("../database/models");
+
 const usersFilePath = path.join(__dirname, "../data/users.json");
 const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 
@@ -65,3 +67,46 @@ const usersServices = {
 
 
 module.exports = usersServices;
+
+/*
+module.exports = {
+
+  getById: async (id) => {
+
+    return await User.findByPk(id);
+
+  },
+
+  getByEmail: async (email) => {
+
+    return await User.findOne({ where: { email: email } });
+
+  },
+
+  getByCategory: async (category) => {
+
+    return await User.findAll({ where: {user_category : category } });
+
+  },
+
+  create: async (requestBody) => {
+
+    await User.create({
+      ...requestBody,
+      password: bcrypt.hashSync(requestBody.password, 12),
+    });
+
+  },
+
+  edit: async (requestBody) => {
+
+    await User.update(requestBody, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+  }
+
+};
+*/

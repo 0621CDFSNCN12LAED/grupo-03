@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
+const { Product } = require("../database/models");
+
 const productsFilePath = path.join(__dirname, "../data/products.json");
 const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 
@@ -74,3 +76,60 @@ const productsService = {
 };
 
 module.exports = productsService;
+
+/*
+module.exports = {
+
+  getById: async (id) => {
+
+    return await Product.findByPk(id, {
+      include: [{association: "categoria_de_producto"}]
+    });
+
+  },
+
+  getAll: async () => {
+
+    return await Product.findAll();
+
+  },
+
+  getByCategory: async (category) => {
+
+    return await Product.findAll({
+      include: [{association: "categoria_de_producto"}]
+    });
+
+  },
+
+  create: async (requestBody) => {
+
+    await Product.create({
+      ...requestBody,
+      password: bcrypt.hashSync(requestBody.password, 12),
+    });
+
+  },
+
+  edit: async (requestBody) => {
+
+    await Product.update(requestBody, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+  },
+
+  delete: async (id) => {
+
+    await Movie.destroy({
+      where: {
+        id: id,
+      },
+    });
+
+  }
+
+};
+*/
