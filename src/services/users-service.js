@@ -32,7 +32,7 @@ const usersServices = {
     await User.create({
       ...payload,
       password: bcrypt.hashSync(payload.password, 12),
-      image: img ? "/images/users/" + image.filename : null,
+      image: img ? "/images/users/" + img.filename : "/images/users/default-user.jpg",
     });
     
   },
@@ -43,7 +43,7 @@ const usersServices = {
       {
         ...payload,
         password: bcrypt.hashSync(payload.password, 12),
-        image: img ? img.filename : img,
+        image: img ? "/images/users/" + img.filename : "/images/users/default-user.jpg",
       },
       {
         where: {id: id}

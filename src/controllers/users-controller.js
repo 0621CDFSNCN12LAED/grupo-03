@@ -81,8 +81,10 @@ const usersController = {
 
     update: async (req, res) => {
 
-        await usersServices.edit(req.params.id, req.body, req.file);
-        res.redirect("profile");
+        await usersServices.edit(req.params.id, req.body, req.file).then(()=> {
+            res.redirect("profile");
+        }).catch((e)=> res.send(e));
+        
 
     }
 

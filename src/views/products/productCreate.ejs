@@ -15,34 +15,26 @@
                 <form action="/products" method="POST" enctype="multipart/form-data">
                     <div class="product-details">
                         <div class="input-box">
-                            <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" placeholder="Hamburguesas">
+                            <input type="text" name="name" id="name" placeholder="Nombre">
                         </div>
                         <div class="input-box">
-                            <label for="description">Descripcion</label>
-                            <input type="text" name="description" id="description" placeholder="Hamburguesas de carne 170gr">
+                            <input type="text" name="description" id="description" placeholder="Descripción">
                         </div>
                         <div class="input-box">
-                            <label for="image">Imagen</label>
                             <input type="file" name="image" id="image" class="input-img" accept="image/*">
                         </div>
                         <div class="input-box">
-                            <label for="category">Categoria</label>
-                            <select name="category" id="category">
-                                <option value="#" selected="true" disabled>Categoría</option>
-                                <option value="Carnes">Carnes</option>
-                                <option value="Pescados">Pescados</option>
-                                <option value="Pollos">Pollos</option>
-                                <option value="Veganos">Veganos</option>
-                            </select>
+                            <select name="productCategoryId">
+                                <% for( category of categories ) { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% } %> 
+                            </select> 
                         </div>
                         <div class="input-box">
-                            <label for="weight">Peso</label>
-                            <input type="number" name="weight" id="weight" placeholder="25kg">
+                            <input type="number" name="weight" id="weight" placeholder="kg">
                         </div>
                         <div class="input-box">
-                            <label for="price">Precio</label>
-                            <input type="number" name="price" id="price" placeholder="$300">
+                            <input type="number" name="price" id="price" placeholder="$">
                         </div>
                     </div>
                     <div class="button-container">

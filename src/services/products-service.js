@@ -26,21 +26,18 @@ const productsService = {
         return indexProducts;
 
     },
-
+    /*
     filterByCategory: async (category) => {
-
-        return await Product.findAll({
-            include: [{where: {productCategory : category}}]
-        });
+        
+        
 
     },
-
+    */
     create: async (payload, img) => {
 
         await Product.create({
             ...payload,
-            password: bcrypt.hashSync(payload.password, 12),
-            image: img ? "/images/products/" + image.filename : "logo_fondo_verde.jpg"
+            image: "/images/products/" + img.filename,
         });
 
     },
@@ -50,7 +47,7 @@ const productsService = {
         await Product.update(
             {
                 ...payload, 
-                image: img ? img.filename : img,
+                image: img ? "/images/products/" + img.filename : img,
             },
             {
                 where: {id: id,},
@@ -61,7 +58,7 @@ const productsService = {
 
     delete: async (id) => {
 
-        await Movie.destroy({
+        await Product.destroy({
             where: {
                 id: id,
             },

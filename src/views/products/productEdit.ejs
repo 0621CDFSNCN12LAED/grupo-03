@@ -28,12 +28,15 @@
                         </div>
                         <div class="input-box">
                             <label for="category">Categoria</label>
-                            <select name="category" id="category">
-                                <option value="Carnes">Carnes</option>
-                                <option value="Pescados">Pescados</option>
-                                <option value="Pollos">Pollos</option>
-                                <option value="Veganos">Veganos</option>
-                            </select>
+                            <select name="productCategoryId">
+                                <% for( category of categories ) { %>
+                                    <% if (category.id == product.productCategoryId) { %> 
+                                        <option value="<%= category.id %>" selected><%= category.name %></option>
+                                    <% } else { %>
+                                        <option value="<%= category.id %>"><%= category.name %></option>
+                                    <% } %> 
+                                <% } %> 
+                            </select> 
                         </div>
                         <div class="input-box">
                             <label for="weight">Tamaño</label>

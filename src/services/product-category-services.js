@@ -12,7 +12,7 @@ module.exports = {
 
   getAll: async () => {
 
-      return await ProductCategory.findAll();
+    return await ProductCategory.findAll();
   
   }
 

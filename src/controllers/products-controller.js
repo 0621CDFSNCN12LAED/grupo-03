@@ -1,4 +1,5 @@
 const productsService = require("../services/products-service");
+const productCategoryServices = require("../services/product-category-services");
 
 const productsController = {
 
@@ -8,30 +9,30 @@ const productsController = {
 
     },
 
-    index: (req, res) => {
+    index: async (req, res) => {
 
-        const randomProducts = productsService.findRandom();
+        const randomProducts = await productsService.findRandom();
         res.render("products/productIndex", {products: randomProducts});
 
     },
-
+    /*
     byCategory: async (req, res) => {
 
-        const productsByCategory = await productsService.filterByCategory(req.params.category);
-        res.render("products/productIndex", {products: productsByCategory}); 
+        res.render("products/productIndex", {products: }); 
 
     },
-
+    */
     create: async (req, res) => {
 
-        res.render("products/productCreate");
+        const categories = await productCategoryServices.getAll();
+        res.render("products/productCreate", {categories});
 
     },
 
     store: async (req, res) => {
 
         await productsService.create(req.body, req.file);
-        res.redirect("/products");
+        res.redirect("products");
 
     },
 
@@ -44,8 +45,15 @@ const productsController = {
 
     edit: async (req, res) => {
 
-        const product = await productsService.getById(req.params.id);
-        res.render("products/productEdit", {product});
+        const id = req.params.id;
+        
+        const promiseProduct = await productsService.getById(id);
+        const promiseCategories = await productCategoryServices.getAll();
+
+        const promiseArray = [promiseProduct, promiseCategories];
+        const [product, categories] = await Promise.all(promiseArray);
+
+        res.render("products/productEdit", {product, categories});
 
     },
 
@@ -66,7 +74,9 @@ const productsController = {
     destroy: async (req, res) => {
 
         await productsService.delete(req.params.id);
-        res.redirect("/products");
+
+        res.redirect("products");
+        
 
     }
 
