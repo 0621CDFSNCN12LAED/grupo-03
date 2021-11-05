@@ -29,7 +29,7 @@ CREATE TABLE `products` (
   `price` DECIMAL NOT NULL,
   `weight` DECIMAL NOT NULL,
   `description` VARCHAR(100) NOT NULL,
-  `image` VARCHAR(100) NOT NULL,
+  `image` VARCHAR(100) DEFAULT "/images/products/default-product.png",
   `product_category_id` INT(10) NOT NULL,
   FOREIGN KEY (`product_category_id`) REFERENCES `product_categories` (`id`)
 );

@@ -39,14 +39,13 @@ const usersServices = {
 
   edit: async (id, payload, img) => {
     
-    await User.update(
-      {
+    await User.update({
         ...payload,
         password: bcrypt.hashSync(payload.password, 12),
-        image: img ? "/images/users/" + img.filename : "/images/users/default-user.jpg",
+        image: img ? "/images/users/" + img.filename : img,
       },
       {
-        where: {id: id}
+        where: {id: id,},
       }
     );
 

@@ -75,7 +75,7 @@ const productsController = {
 
         await productsService.delete(req.params.id);
 
-        res.redirect("products");
+        res.redirect("/products");
         
 
     }

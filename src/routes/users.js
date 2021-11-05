@@ -51,7 +51,7 @@ router.post(
 router.get("/profile", authLoggedMiddleware, usersController.profile);
 router.get("/profile/edit", authLoggedMiddleware, usersController.edit);
 router.put(
-  "/profile", 
+  "/profile/edit", 
   uploader.single("image"), 
   registerValidation, 
   assertValidations, 

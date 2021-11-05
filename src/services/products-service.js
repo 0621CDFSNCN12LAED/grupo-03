@@ -37,7 +37,7 @@ const productsService = {
 
         await Product.create({
             ...payload,
-            image: "/images/products/" + img.filename,
+            image: img ? "/images/products/" + img.filename : "/images/products/default-product.png",
         });
 
     },
