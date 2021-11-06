@@ -25,15 +25,9 @@
 
                 <form action="/categorias" method="POST">
                     <select name="categoría">
-                        <option value="1">Categoría</option>
-                        <option value="2">Carne Vacuna</option>
-                        <option value="3">Pescados</option>
-                        <option value="4">Mariscos</option>
-                        <option value="5">Pollo</option>
-                        <option value="6">Empanizados</option>
-                        <option value="7">Veganos</option>
-                        <option value="8">Vegetarianos</option>
-                        <option value="9">Celíacos</option>
+                        <% for( category of categories ) { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% } %> 
                     </select>
                 </form>
                 <form action="/productos" method="POST">

@@ -26,13 +26,22 @@ const productsService = {
         return indexProducts;
 
     },
-    /*
-    filterByCategory: async (category) => {
+    
+    filterByCategory: async (id) => {
         
-        
+        let indexProducts = [];
+        const filteredProducts = await Product.findAll({
+            where: {productCategoryId: id}
+        });
+        const maxProducts = 8;
+        for (let i = 0; i < maxProducts; i++){
+            const randomIndex = Math.floor(Math.random() * (filteredProducts.length));
+            indexProducts.push(filteredProducts[randomIndex])
+        };
+        return indexProducts;
 
     },
-    */
+    
     create: async (payload, img) => {
 
         await Product.create({

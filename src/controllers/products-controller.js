@@ -1,5 +1,5 @@
 const productsService = require("../services/products-service");
-const productCategoryServices = require("../services/product-category-services");
+const productCategoryService = require("../services/product-category-service");
 
 const productsController = {
 
@@ -11,20 +11,31 @@ const productsController = {
 
     index: async (req, res) => {
 
-        const randomProducts = await productsService.findRandom();
-        res.render("products/productIndex", {products: randomProducts});
+        const promiseRandomProducts = await productsService.findRandom();
+        const promiseCategories = await productCategoryService.getAll();
+
+        const promiseArray = [promiseRandomProducts, promiseCategories];
+        const [products, categories] = await Promise.all(promiseArray);
+
+        res.render("products/productIndex", {products, categories});
 
     },
-    /*
+    
     byCategory: async (req, res) => {
 
-        res.render("products/productIndex", {products: }); 
+        const promiseProductsByCategory = await productsService.filterByCategory(req.params.id);
+        const promiseCategories = await productCategoryService.getAll();
+
+        const promiseArray = [promiseProductsByCategory, promiseCategories];
+        const [products, categories] = await Promise.all(promiseArray);
+
+        res.render("products/productIndex", {products, categories}); 
 
     },
-    */
+    
     create: async (req, res) => {
 
-        const categories = await productCategoryServices.getAll();
+        const categories = await productCategoryService.getAll();
         res.render("products/productCreate", {categories});
 
     },
@@ -48,7 +59,7 @@ const productsController = {
         const id = req.params.id;
         
         const promiseProduct = await productsService.getById(id);
-        const promiseCategories = await productCategoryServices.getAll();
+        const promiseCategories = await productCategoryService.getAll();
 
         const promiseArray = [promiseProduct, promiseCategories];
         const [product, categories] = await Promise.all(promiseArray);

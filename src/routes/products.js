@@ -44,7 +44,7 @@ router.post(
 //Read
 router.get("/", productsController.index);
 router.get("/Cart", productsController.cart);
-//router.get("/filter/:category", productsController.byCategory);
+router.get("/category/:id", productsController.byCategory);
 router.get("/:id", productsController.detail);
 
 //Update

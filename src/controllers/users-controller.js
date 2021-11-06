@@ -1,4 +1,4 @@
-const usersServices = require("../services/users-service");
+const usersService = require("../services/users-service");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
@@ -22,7 +22,7 @@ const usersController = {
         
         if ( errors.isEmpty() ) {
         
-            const user = await usersServices.getByEmail(req.body.email);
+            const user = await usersService.getByEmail(req.body.email);
 
             if (!user) {
                 res.render("users/login", {errors: [{msg: "Credenciales invalidas"}]});
@@ -62,7 +62,7 @@ const usersController = {
 
         if( errors.isEmpty() ) {
 
-            await usersServices.createOne(req.body, req.file);
+            await usersService.createOne(req.body, req.file);
             res.redirect("login");
 
         } else {
@@ -81,7 +81,7 @@ const usersController = {
 
     update: async (req, res) => {
 
-        await usersServices.edit(req.user.id, req.body, req.file);
+        await usersService.edit(req.user.id, req.body, req.file);
 
         res.redirect("/users/profile");
         
