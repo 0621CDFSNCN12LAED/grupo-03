@@ -39,7 +39,7 @@ const usersServices = {
 
   edit: async (id, payload, img) => {
 
-    const user = User.findByPk(id);
+    const user = await User.findByPk(id);
     
     await User.update({
         ...payload,
