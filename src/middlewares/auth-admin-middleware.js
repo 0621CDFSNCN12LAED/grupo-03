@@ -1,6 +1,12 @@
 const authAdminMiddleware = (req,res, next) => {
 
-   if (req.user.userCategoryId == 2) {
+   if (req.user == undefined) {
+
+      res.redirect("back");
+
+   }
+   
+   if (req.user.userCategoryId == 2){
 
       next();
 
