@@ -53,10 +53,12 @@ const productsService = {
 
     edit: async (id, payload, img) => {
 
+        const product = await Product.findByPk(id);
+
         await Product.update(
             {
                 ...payload, 
-                image: img ? "/images/products/" + img.filename : img,
+                image: img ? "/images/products/" + img.filename : product.image,
             },
             {
                 where: {id: id,},

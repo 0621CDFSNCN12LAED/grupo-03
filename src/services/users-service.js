@@ -38,11 +38,13 @@ const usersServices = {
   },
 
   edit: async (id, payload, img) => {
+
+    const user = User.findByPk(id);
     
     await User.update({
         ...payload,
         password: bcrypt.hashSync(payload.password, 12),
-        image: img ? "/images/users/" + img.filename : img,
+        image: img ? "/images/users/" + img.filename : user.image,
       },
       {
         where: {id: id,},

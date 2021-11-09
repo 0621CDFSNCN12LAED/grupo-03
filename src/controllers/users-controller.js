@@ -85,8 +85,6 @@ const usersController = {
 
         res.redirect("/users/profile");
         
-        
-
     }
 
 };

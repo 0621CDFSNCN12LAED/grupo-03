@@ -12,7 +12,7 @@
         <section>            
             <div class="container">
                 <div class="title">Editar Producto</div>
-                <form action="/products/<%= product.id %>?_method=PUT" method="POST">
+                <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <div class="product-details">
                         <div class="input-box">
                             <label for="name">Nombre</label>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="input-box">
                             <label for="image">Imagen</label>
-                            <input type="file" name="image" class="input-img" accept="image/*">
+                            <input type="file" name="image" id="image" class="input-img" accept="image/*">
                         </div>
                         <div class="input-box">
                             <label for="category">Categoria</label>
