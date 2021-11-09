@@ -7,9 +7,6 @@ module.exports = [
     body('description')
         .notEmpty()
         .withMessage('Debes asignarle una Descripción'),
-    body('image')
-        .notEmpty()
-        .withMessage('Debes asignarle una Imagen'),
     body('productCategoryId')
         .notEmpty()
         .withMessage('Debes asignarle una Categoria'),

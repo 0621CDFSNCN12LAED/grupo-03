@@ -17,7 +17,7 @@ const storage = multer.diskStorage(
 const uploader = multer({ storage });
 
 
-//validations (no funcionan aun)
+//validations
 /*
 const productValidations = require("../validations/product-validations");
 const assertValidations = require("../validations/assert-validations");
@@ -35,8 +35,8 @@ router.post(
     "/",
     /*
     productValidations, 
-    assertValidations, 
-    */
+    assertValidations,
+    */ 
     uploader.single("image"), 
     productsController.store
 );
