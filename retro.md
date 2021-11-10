@@ -36,7 +36,7 @@ Hacer mas : Cambiar el productCart, mejorar los estilos de las vistas, basarse
 
 Hacer menos: Comunicarse por whatsapp
 
-Dejar de hacer:
+Dejar de hacer: Dejar tareas para el final
 
 Retrospectiva sprint 4:
 
@@ -49,3 +49,15 @@ Hacer mas : Mejorar los estilos de las vistas, basarse en los sitios que elegi
 Hacer menos: Comunicarse por whatsapp
 
 Dejar de hacer: Dejar tareas para el final
+
+Retrospectiva sprint 5:
+
+Comenzar a hacer: boceto del sitio y realizar los standups a tiempo
+
+Seguir haciendo: Completar las tareas a tiempo y de manera correcta
+
+Hacer mas : Mejorar los estilos de las vistas, basarse en los sitios que elegimos como referencia y hacer reuniones
+
+Hacer menos: Comunicarse por whatsapp
+
+Dejar de hacer: Dejar detalles para el final, al igual que hacer los standups al final del sprint, no dividir bien las tareas a traves de trello

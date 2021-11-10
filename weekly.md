@@ -32,3 +32,19 @@ Que hizo ayer: Finalizar login y registro de usuario
 Si se encontró con algún impedimento: Tuvimos dificultades con la sesion de usuario al re estructurar el login, que pudimos resolver
 
 Que va hacer hoy: Implementar daily/weekly standups, y revisar el assert validation
+
+02/11/2021
+
+Que hizo ayer: Finalizar el der de la base de datros
+
+Si se encontró con algún impedimento: Tuvimos dificultades con las relaciones entre las entidades de la base de datos, que se pudieron resolver al simplificar la resolucion del problema como si fuera un algoritmo
+
+Que va hacer hoy: Implementar sequelize junto a sus modelos y cambiar en el crud para integrarlo con la base de datos
+
+08/11/2021
+
+Que hizo ayer: Finalizar el crud integrado con la base de datos, utilizando sequelize para que suceda lo pedido en los servicios en las rutas, los controladores y las vistas
+
+Si se encontró con algún impedimento: Tuvimos dificultades con la carga de imagenes en la edicion de usuarios y productos, el unico detalle que no funciona en el crud
+
+Que va hacer hoy: Resolver la carga de imagenes en la edicion de usuarios y productos, realizar una breve retrospectiva del sprint 5 e implementar daily/weekly standups
