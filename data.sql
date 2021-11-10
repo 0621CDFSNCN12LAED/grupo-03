@@ -4,8 +4,8 @@ LOCK TABLES `user_categories` WRITE;
 INSERT INTO
   `user_categories`
 VALUES
-  ('DEFAULT', 'client'),
-  ('DEFAULT', 'admin');
+  (DEFAULT, 'client'),
+  (DEFAULT, 'admin');
 UNLOCK TABLES;
 --product_category
   LOCK TABLES `product_categories` WRITE;
@@ -808,20 +808,20 @@ UNLOCK TABLES;
 INSERT INTO
   `purchases`
 VALUES
-  ('DEFAULT', '2021/11/04', 2592.4, 4.3, 3),
-  ('DEFAULT', '2021/11/07', 8263.29, 4.47, 1),
-  ('DEFAULT', '2021/11/02', 3866.43, 3.43, 1),
-  ('DEFAULT', '2021/11/01', 2778.61, 5.78, 3),
-  ('DEFAULT', '2021/11/06', 4323.52, 8.88, 1);
+  (DEFAULT, '2021/11/04', 2592.4, 4.3, 3),
+  (DEFAULT, '2021/11/07', 8263.29, 4.47, 1),
+  (DEFAULT, '2021/11/02', 3866.43, 3.43, 1),
+  (DEFAULT, '2021/11/01', 2778.61, 5.78, 3),
+  (DEFAULT, '2021/11/06', 4323.52, 8.88, 1);
 UNLOCK TABLES;
 --purchase_product
   LOCK TABLES `purchase_product` WRITE;
 INSERT INTO
   `purchase_product`
 VALUES
-  ('DEFAULT', 657.1, 1.83, 1, 40),
-  ('DEFAULT', 2187.89, 2.37, 2, 40),
-  ('DEFAULT', 1875.96, 4.91, 3, 81),
-  ('DEFAULT', 2271.55, 2.81, 4, 40),
-  ('DEFAULT', 565.19, 4.33, 5, 1);
+  (DEFAULT, 657.1, 1.83, 1, 40),
+  (DEFAULT, 2187.89, 2.37, 2, 40),
+  (DEFAULT, 1875.96, 4.91, 3, 81),
+  (DEFAULT, 2271.55, 2.81, 4, 40),
+  (DEFAULT, 565.19, 4.33, 5, 1);
 UNLOCK TABLES;
