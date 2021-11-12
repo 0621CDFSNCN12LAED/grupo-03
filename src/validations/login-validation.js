@@ -10,9 +10,6 @@ const loginValidation = [
     body('password')
         .notEmpty()
         .withMessage('Debes completar la Contraseña')
-        .bail()
-        .isLength({min:8})
-        .withMessage("La Contraseña debe ser mas larga")
 ];
 
 module.exports = loginValidation;
