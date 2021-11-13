@@ -1,4 +1,4 @@
-const { DataTypes } = require("Sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => { 
 
@@ -9,8 +9,8 @@ module.exports = (sequelize) => {
         },
         {
             tableName: "product_categories",
-            timestamps: false,
-            underscored: true
+            underscored: true,
+            paranoid: true
         }
     );
 

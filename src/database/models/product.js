@@ -1,4 +1,4 @@
-const { DataTypes } = require("Sequelize");
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => { 
 
@@ -14,8 +14,8 @@ module.exports = (sequelize) => {
         },
         {
             tableName: "products",
-            timestamps: false,
-            underscored: true
+            underscored: true,
+            paranoid: true
         }
     );
     
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
             through: "purchase_product",
             foreignKey: "productId",
             otherKey: "purchaseId",
-            timestamps: false
+            timestamps: true
         });
 
     }
