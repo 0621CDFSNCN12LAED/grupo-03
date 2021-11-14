@@ -3,12 +3,14 @@ const usersService = require("../services/users-service");
 
 module.exports = [
   body("firstName")
+    .trim()
     .notEmpty()
     .withMessage("Debes completar tu Nombre")
     .bail()
     .isLength({min:2})
     .withMessage("El Nombre debe ser mas largo"),
   body("lastName")
+    .trim()
     .notEmpty()
     .withMessage("Debes completar tu Apellido")
     .bail()
@@ -31,6 +33,10 @@ module.exports = [
     .notEmpty()
     .withMessage("Debes completar la Contraseña")
     .bail()
-    .isLength({min:8})
+    .isStrongPassword()
+    .withMessage("Debes completar una Contraseña fuerte"),
+  body("image")
+    .optional({nullable: true})
+    .isIn(["JPG", "JPEG", "PNG", "GIF"])
     .withMessage("La Contraseña debe ser mas larga")
 ];

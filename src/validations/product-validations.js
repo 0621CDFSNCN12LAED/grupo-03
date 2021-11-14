@@ -20,12 +20,12 @@ module.exports = [
         .notEmpty()
         .withMessage('Debes asignarle un Peso')
         .bail()
-        .isNumeric()
-        .withMessage('El Peso debe ser un numero'),
+        .isDecimal()
+        .withMessage('El Peso debe ser un numero decimal'),
     body('price')
         .notEmpty()
         .withMessage('Debes asignarle un Precio')
         .bail()
-        .isNumeric()
-        .withMessage('El Precio debe ser un numero')
+        .isDecimal()
+        .withMessage('El Precio debe ser un numero decimal')
 ];
