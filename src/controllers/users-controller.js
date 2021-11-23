@@ -63,7 +63,7 @@ const usersController = {
         if( errors.isEmpty() ) {
 
             await usersService.createOne(req.body, req.file);
-            res.redirect("login");
+            res.redirect("/users/login");
 
         } else {
 

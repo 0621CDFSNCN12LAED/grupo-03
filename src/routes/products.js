@@ -18,10 +18,8 @@ const uploader = multer({ storage });
 
 
 //validations
-/*
 const productValidations = require("../validations/product-validations");
 const assertValidations = require("../validations/assert-validations");
-*/
 
 //middlewares
 const authAdminMiddleware = require("../middlewares/auth-admin-middleware");
@@ -33,10 +31,9 @@ const productsController = require("../controllers/products-controller.js");
 router.get("/create",authAdminMiddleware, productsController.create);
 router.post(
     "/",
-    /*
+    uploader.single("image"), 
     productValidations, 
     assertValidations,
-    */ 
     uploader.single("image"), 
     productsController.store
 );
@@ -51,11 +48,9 @@ router.get("/:id", productsController.detail);
 router.get("/:id/edit",authAdminMiddleware, productsController.edit);
 router.put(
     "/:id",
-    /*
+    uploader.single("image"), 
     productValidations, 
     assertValidations, 
-    */
-    uploader.single("image"), 
     productsController.update
 );
 

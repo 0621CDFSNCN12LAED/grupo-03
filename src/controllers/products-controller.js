@@ -43,7 +43,7 @@ const productsController = {
     store: async (req, res) => {
 
         await productsService.create(req.body, req.file);
-        res.redirect("products");
+        res.redirect("/products");
 
     },
 
