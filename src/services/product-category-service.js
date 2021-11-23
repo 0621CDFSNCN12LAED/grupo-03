@@ -6,6 +6,12 @@ module.exports = {
 
     return await ProductCategory.findAll();
   
+  },
+
+  getByPk: async (id) => {
+
+    return await ProductCategory.findByPk(id);
+
   }
 
 };
