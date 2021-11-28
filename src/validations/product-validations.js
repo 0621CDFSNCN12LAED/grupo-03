@@ -17,7 +17,7 @@ module.exports = [
     body("image")
         .optional({nullable: true})
         .isIn(["JPG", "JPEG", "PNG", "GIF"])
-        .withMessage("La Contraseña debe ser mas larga"),
+        .withMessage("Archivo de imagen invalido"),
     body('productCategoryId')
         .notEmpty()
         .withMessage('Debes asignarle una Categoria')

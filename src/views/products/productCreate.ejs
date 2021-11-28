@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/styles-productEdit.css">
+    <link rel="stylesheet" href="/css/styles-productForm.css">
+    <script defer src="/js/productForm.js"></script>
 </head>
 <body>
     <header>
@@ -11,32 +12,40 @@
     <main>
         <section>            
             <div class="container">
-                <div class="title">Crear Producto</div>
-                <form action="/products" method="POST" enctype="multipart/form-data">
+                <form action="/products" class="formulario" method="POST" enctype="multipart/form-data">
+                    <div class="title">Crear Producto</div>
+                    <br>
                     <div class="product-details">
                         <div class="input-box">
                             <input type="text" name="name" id="name" placeholder="Nombre">
                         </div>
+                        <br>
                         <div class="input-box">
                             <input type="text" name="description" id="description" placeholder="Descripción">
                         </div>
+                        <br>
                         <div class="input-box">
                             <input type="file" name="image" id="image" class="input-img" accept="image/*">
                         </div>
+                        <br>
                         <div class="input-box">
                             <select name="productCategoryId">
+                                <option selected disabled="">Selecciona una categoria</option>
                                 <% for( category of categories ) { %>
                                     <option value="<%= category.id %>"><%= category.name %></option>
                                 <% } %> 
                             </select> 
                         </div>
+                        <br>
                         <div class="input-box">
                             <input type="number" name="weight" id="weight" placeholder="kg">
                         </div>
+                        <br>
                         <div class="input-box">
                             <input type="number" name="price" id="price" placeholder="$">
                         </div>
                     </div>
+                    <br>
                     <div class="button-container">
                         <div class="button">
                             <input type="submit" value="Guardar">
@@ -45,6 +54,22 @@
                 </form>
             </div>
         </section>
+        <div class="validation-errors">
+            <div class="frontend-validations">
+                <p class="error-title" id="error-title"></p>
+                <ul class="errors" id="errors"></ul>
+            </div>
+            <div class="backend-validations">
+                <% if (locals.errors) { %> 
+                    <p style = "color:red">ERROR</p>
+                    <ul>
+                        <% for (let error of errors) { %> 
+                            <li style = "color:red"><%= error.msg %></li>
+                        <% } %> 
+                    </ul>
+                <% } %> 
+            </div>
+        </div>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>

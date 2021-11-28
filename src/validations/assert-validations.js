@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 
     } else {
 
-        res.send(errors);
+        res.redirect("back");
 
     }
 

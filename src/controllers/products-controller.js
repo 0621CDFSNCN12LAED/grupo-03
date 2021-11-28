@@ -1,5 +1,6 @@
 const productsService = require("../services/products-service");
 const productCategoryService = require("../services/product-category-service");
+const { validationResult } = require("express-validator");
 
 const productsController = {
 
@@ -42,8 +43,19 @@ const productsController = {
 
     store: async (req, res) => {
 
-        await productsService.create(req.body, req.file);
-        res.redirect("/products");
+        const errors = validationResult(req);
+
+        if ( errors.isEmpty() ) {
+
+            await productsService.create(req.body, req.file);
+            res.redirect("/products");
+
+        } else {
+
+            const categories = await productCategoryService.getAll();
+            res.render("products/productCreate", {categories, errors: errors.array()});
+
+        }
 
     },
 
@@ -70,9 +82,27 @@ const productsController = {
 
     update: async (req, res) => {
 
-        await productsService.edit(req.params.id, req.body, req.file);
-        res.redirect("/products");
+        const errors = validationResult(req);
 
+        if ( errors.isEmpty() ) {
+
+            await productsService.edit(req.params.id, req.body, req.file);
+            res.redirect("/products");
+        
+        } else {
+
+            const id = req.params.id;
+        
+            const promiseProduct = await productsService.getById(id);
+            const promiseCategories = await productCategoryService.getAll();
+
+            const promiseArray = [promiseProduct, promiseCategories];
+            const [product, categories] = await Promise.all(promiseArray);
+
+            res.render("products/productEdit", {product, categories, errors: errors.array()});
+
+        }
+        
     },
 
     delete: async (req, res) => {

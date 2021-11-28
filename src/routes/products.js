@@ -33,7 +33,7 @@ router.post(
     "/",
     uploader.single("image"), 
     productValidations, 
-    assertValidations,
+    //assertValidations,
     uploader.single("image"), 
     productsController.store
 );
@@ -50,7 +50,7 @@ router.put(
     "/:id",
     uploader.single("image"), 
     productValidations, 
-    assertValidations, 
+    //assertValidations, 
     productsController.update
 );
 

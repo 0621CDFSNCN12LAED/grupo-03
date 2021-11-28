@@ -44,7 +44,7 @@ const usersController = {
 
         } else {
 
-            res.render("users/login", {errors: errors.array()})
+            res.render("users/login", {errors: errors.array()});
 
         }
 
