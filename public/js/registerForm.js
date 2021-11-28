@@ -62,7 +62,6 @@ function formIsInvalid() {
   const firstNameLength = validateInput(firstName, isLength, "El Nombre debe ser mas largo");
   const lastNameLength = validateInput(lastName, isLength, "El Apellido ser mas largo");
   const inValidEmail = validateInput(email, notMail, "Email invalido");
-  const emailInUse = validateInput(email, repeatedMail, "Email ya en uso");
   const inValidPassword = validateInput(password, weakPassword, "Tu Contraseña es debil");
   const inValidImage = validateInput(image, inValidFile, "Archivo de imagen invalido");
 
@@ -82,10 +81,6 @@ function formIsInvalid() {
   
   if (!emailEmpty) {
     errors.push(inValidEmail);
-  }
-
-  if (!emailEmpty && !inValidEmail) {
-    errors.push(emailInUse);
   }
 
   errors.push(passwordEmpty);
@@ -117,14 +112,6 @@ function notMail (input) {
     return true;
   }
   
-}
-
-const repeatedMail = async (input) => {
-  const usersService = require("../../src/services/users-service");
-  const user = await usersService.getByEmail(input);
-  if (user) {
-    return true;
-  }
 }
 
 function weakPassword (input) {

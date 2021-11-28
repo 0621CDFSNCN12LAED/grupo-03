@@ -52,7 +52,6 @@ function formIsInvalid() {
   const passwordEmpty = validateInput(password, isEmpty, "La Contraseña no puede estar vacia");
 
   const inValidEmail = validateInput(email, notMail, "Email invalido");
-  const emailNonExistent = validateInput(email, mailNotFound, "Credencial Invalida");
 
   errors.push(emailEmpty);
   
@@ -60,10 +59,6 @@ function formIsInvalid() {
     errors.push(inValidEmail);
   }
   
-  if (!emailEmpty && !inValidEmail) {
-    errors.push(emailNonExistent);
-  }
-
   errors.push(passwordEmpty);
   
   console.log(errors);
@@ -83,14 +78,6 @@ function notMail (input) {
     return true;
   }
   
-}
-
-const mailNotFound = async (input) => {
-  const usersService = require("../../src/services/users-service");
-  const user = await usersService.getByEmail(input);
-  if (!user) {
-    return true;
-  }
 }
 
 function validateInput(input, validationFunction, message) {
