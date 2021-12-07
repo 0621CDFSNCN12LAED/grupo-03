@@ -34,7 +34,6 @@ router.post(
     uploader.single("image"), 
     productValidations, 
     //assertValidations,
-    uploader.single("image"), 
     productsController.store
 );
 
