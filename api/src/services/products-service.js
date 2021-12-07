@@ -14,6 +14,16 @@ const productsService = {
 
     },
 
+    findByTitle: async (name) => {
+        return await Product.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${name}%`,
+                },
+            },
+        });
+    },
+
     findRandom: async () => {
 
         let indexProducts = [];

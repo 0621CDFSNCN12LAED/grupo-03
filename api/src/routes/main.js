@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
+//API
+const apiRouter = require("./api/index");
+router.use("/api", apiRouter);
+
+//Express
 const loginMiddleware = require("../middlewares/login-middleware");
 const mainController = require("../controllers/main-controller.js");
 
