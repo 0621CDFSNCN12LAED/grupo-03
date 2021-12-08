@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./assets/css/app.css";
+
+import SideBar from "./components/sideBar/sideBar";
+import TopNavBar from "./components/topNavBar/topNavBar";
+import Footer from "./components/footer/footer";
+
+import { Switch, Route } from "react-router-dom";
+import ContentWrapper from "./components/contentWrapper/contentWrapper";
+import ContentRowTop from "./components/contentWrapper/contentRowTop/contentRowTop";
+import MovieInDb from "./components/contentWrapper/movieDetail/movieInDb";
+import GenresInDb from "./components/contentWrapper/categoriesInDb/genresInDb";
+import Error404 from "./components/error/error404";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="wrapper">
+      <SideBar />
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <TopNavBar />
+          <Switch>
+            <Route path="/" exact component={ContentWrapper}></Route>
+            <Route path="/dbData" component={ContentRowTop}></Route>
+            <Route path="/movie" component={MovieInDb}></Route>
+            <Route path="/genres" component={GenresInDb}></Route>
+            <Route component={Error404}></Route>
+          </Switch>
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -26,6 +26,14 @@ app.use(express.static(publicPath));
 const mainRouter = require("./routes/main.js");
 app.use("/", mainRouter);
 
+
+const cors = require("cors");
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+    })
+);
+
 app.listen(3050, () => {
     console.log('Servidor corriendo en el puerto 3050');
 });
