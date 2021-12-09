@@ -22,10 +22,14 @@ const productValidations = require("../validations/product-validations");
 const assertValidations = require("../validations/assert-validations");
 
 //middlewares
+const validationsErrorsMiddleware = require("../middlewares/validations-errors-middleware");
 const authAdminMiddleware = require("../middlewares/auth-admin-middleware");
 
 //controllers
 const productsController = require("../controllers/products-controller.js");
+
+//rutas
+router.use(validationsErrorsMiddleware);
 
 //Create
 router.get("/create",authAdminMiddleware, productsController.create);
@@ -33,7 +37,7 @@ router.post(
     "/",
     uploader.single("image"), 
     productValidations, 
-    //assertValidations,
+    assertValidations,
     productsController.store
 );
 
@@ -49,7 +53,7 @@ router.put(
     "/:id",
     uploader.single("image"), 
     productValidations, 
-    //assertValidations, 
+    assertValidations, 
     productsController.update
 );
 

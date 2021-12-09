@@ -14,6 +14,15 @@ const productsService = {
 
     },
 
+    findAndCountAll: async (pageSize, page) => {
+
+        return await Product.findAndCountAll({
+            limit: pageSize,
+            offset: page * pageSize
+        });
+
+    },
+
     findByTitle: async (name) => {
         return await Product.findAll({
             where: {

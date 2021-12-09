@@ -3,15 +3,32 @@ const usersService = require("../../services/users-service");
 const usersApiController = {
 
     list: async (req, res) => {
-        const users = await usersService.findAll();
+        const pageSize = 10;
+        const page = req.query.page || 0;
+        const offset = page * pageSize;
+
+        const {count, rows} = await usersService.findAndCountAll(pageSize, page);
+
+        const nextPage = offset + pageSize < count ? `/api/products?page=${page + 1}` : null;
+        const prevPage = page > 0 ? `/api/products?page=${page - 1}` : null;
 
         res.json({
             meta: {
                 status: 200,
-                count: users.length,
-                url: "api/users"
+                count: count,
+                page: page,
+                pageSize: pageSize,
+                url: `/api/products?page=${page}`,
+                nextUrl: nextPage,
+                prevUrl: prevPage
             },
-            data: users
+            data: rows.map((user) => ({
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                detail: `/api/users/${user.id}`
+            }))
         });
     },
     
@@ -24,7 +41,13 @@ const usersApiController = {
                     status: 200,
                     url: "api/users/" + req.params.id
                 },
-                data: user
+                data: {
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    image: "http://localhost:3000" + user.image
+                }
             });
         }
         

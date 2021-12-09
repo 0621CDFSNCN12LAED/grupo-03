@@ -9,7 +9,7 @@ const storage = multer.diskStorage(
   {
     destination: path.join(__dirname, "../../public/images/users"),
     filename: (req, file, cb) => {
-        cb(null, 'usr-img-' + Date.now() + path.extname(file.originalname));
+        cb(null, + Date.now() + path.extname(file.originalname));
     }
   }
 );
@@ -22,11 +22,15 @@ const loginValidation = require("../validations/login-validation");
 const assertValidations = require("../validations/assert-validations");
 
 //middlewares
+const validationsErrorsMiddleware = require("../middlewares/validations-errors-middleware");
 const authGuestMiddleware = require("../middlewares/auth-guest-middleware");
 const authLoggedMiddleware = require("../middlewares/auth-logged-middleware");
 
 //controllers
 const usersController = require("../controllers/users-controller");
+
+//rutas
+router.use(validationsErrorsMiddleware);
 
 //Create
 router.get("/register", authGuestMiddleware, usersController.register);
@@ -34,7 +38,7 @@ router.post(
   "/register",
   uploader.single("image"),
   registerValidation,
-  /*assertValidations,*/
+  assertValidations,
   usersController.processRegister
 );
 
@@ -43,7 +47,7 @@ router.get("/login", authGuestMiddleware, usersController.login);
 router.post(
   "/login",
   loginValidation,
-  /*assertValidations,*/
+  assertValidations,
   usersController.processLogin
 );
 

@@ -9,6 +9,15 @@ const usersServices = {
 
   },
 
+  findAndCountAll: async (pageSize, page) => {
+
+    return await User.findAndCountAll({
+        limit: pageSize,
+        offset: page * pageSize
+    });
+
+},
+
   findByPk: async (id) => {
 
     return await User.findByPk(id);

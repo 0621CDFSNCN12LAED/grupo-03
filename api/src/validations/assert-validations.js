@@ -10,6 +10,7 @@ module.exports = (req, res, next) => {
 
     } else {
 
+        req.session.errors = errors.array();
         res.redirect("back");
 
     }
