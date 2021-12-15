@@ -60,6 +60,18 @@ const productsService = {
         return indexProducts;
 
     },
+
+    lastProductInDb : async (req, res) => { 
+        return await Product.findAll({where: {updatedAt: null}});
+    },
+
+    findByCategory: async (category, pageSize, page) => {
+        return await Product.findAndCountAll({
+            limit: pageSize,
+            offset: page * pageSize, 
+            where: {productCategoryId: category}
+        });
+    },
     
     create: async (payload, img) => {
 

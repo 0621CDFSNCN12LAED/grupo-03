@@ -13,11 +13,11 @@ export default function ContentWrapper() {
           <ContentRowTop />
 
           <div class="row">
-            <ContentCard title="Last movie in Data Base">
+            <ContentCard title="Last Created Product">
               <MovieDetail />
             </ContentCard>
 
-            <ContentCard title="Genres in Data Base">
+            <ContentCard title="Categories">
               <CategoriesInDb />
             </ContentCard>
           </div>

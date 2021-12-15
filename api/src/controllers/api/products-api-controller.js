@@ -2,19 +2,19 @@ const productsService = require("../../services/products-service");
 const productCategoryService = require("../../services/product-category-service");
 
 const productsApiController = {
-
+    /*
     create: async (req, res) => {
         const product = await productsService.create(req.body);
  
         res.json({
             meta: {
                 status: 200,
-                url: "api/products"
+                url: "/api/products"
             },
             data: product
         });
     },
-
+    */
     list: async (req, res) => {
         const pageSize = 10;
         const page = req.query.page || 0;
@@ -22,8 +22,8 @@ const productsApiController = {
 
         const {count, rows} = await productsService.findAndCountAll(pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/products?page=${page + 1}` : null;
-        const prevPage = page > 0 ? `/api/products?page=${page - 1}` : null;
+        const nextPage = offset + pageSize < count ? `/api/products?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {
@@ -52,7 +52,7 @@ const productsApiController = {
             res.json({
                 meta: {
                     status: 200,
-                    url: "api/products/" + req.params.id
+                    url: "/api/products/" + req.params.id
                 },
                 data: {
                     id: product.id,
@@ -75,6 +75,156 @@ const productsApiController = {
         });
     },
 
+    categories: async (req, res) => {
+        const categories = await productCategoryService.getAll();
+
+        res.json({
+            meta: {
+                status: 200,
+                count: categories.length,
+                url: "/api/products/categories"
+            },
+            data: categories
+        });
+    },
+
+    findCarnes: async (req, res) => {
+        const pageSize = 10;
+        const page = req.query.page || 0;
+        const offset = page * pageSize;
+        
+        const {count, rows} = await productsService.findByCategory(1, pageSize, page);
+
+        const nextPage = offset + pageSize < count ? `/api/products/carnes?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/carnes?page=${parseInt(page) - 1}` : null;
+
+        res.json({
+            meta: {
+                status: 200,
+                count: count,
+                page: page,
+                pageSize: pageSize,
+                url: `/api/products/carnes?page=${page}`,
+                nextUrl: nextPage,
+                previousUrl: prevPage
+            },
+            data: rows.map((product) => ({
+                id: product.id,
+                name: product.name, 
+                description: product.description,
+                detail: `/api/products/${product.id}`
+            }))
+        });
+    },
+
+    findPescados: async (req, res) => {
+        const pageSize = 10;
+        const page = req.query.page || 0;
+        const offset = page * pageSize;
+        
+        const {count, rows} = await productsService.findByCategory(2, pageSize, page);
+
+        const nextPage = offset + pageSize < count ? `/api/products/pescados?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/pescados?page=${parseInt(page) - 1}` : null;
+
+        res.json({
+            meta: {
+                status: 200,
+                count: count,
+                page: page,
+                pageSize: pageSize,
+                url: `/api/products/pescados?page=${page}`,
+                nextUrl: nextPage,
+                previousUrl: prevPage
+            },
+            data: rows.map((product) => ({
+                id: product.id,
+                name: product.name, 
+                description: product.description,
+                detail: `/api/products/${product.id}`
+            }))
+        });
+    },
+
+    findPollos: async (req, res) => {
+        const pageSize = 10;
+        const page = req.query.page || 0;
+        const offset = page * pageSize;
+        
+        const {count, rows} = await productsService.findByCategory(3, pageSize, page);
+
+        const nextPage = offset + pageSize < count ? `/api/products/pollos?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/pollos?page=${parseInt(page) - 1}` : null;
+
+        res.json({
+            meta: {
+                status: 200,
+                count: count,
+                page: page,
+                pageSize: pageSize,
+                url: `/api/products/pollos?page=${page}`,
+                nextUrl: nextPage,
+                previousUrl: prevPage
+            },
+            data: rows.map((product) => ({
+                id: product.id,
+                name: product.name, 
+                description: product.description,
+                detail: `/api/products/${product.id}`
+            }))
+        });
+    },
+
+    findVeganos: async (req, res) => {
+        const pageSize = 10;
+        const page = req.query.page || 0;
+        const offset = page * pageSize;
+        
+        const {count, rows} = await productsService.findByCategory(4, pageSize, page);
+
+        const nextPage = offset + pageSize < count ? `/api/products/veganos?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/veganos?page=${parseInt(page) - 1}` : null;
+
+        res.json({
+            meta: {
+                status: 200,
+                count: count,
+                page: page,
+                pageSize: pageSize,
+                url: `/api/products/veganos?page=${page}`,
+                nextUrl: nextPage,
+                previousUrl: prevPage
+            },
+            data: rows.map((product) => ({
+                id: product.id,
+                name: product.name, 
+                description: product.description,
+                detail: `/api/products/${product.id}`
+            }))
+        });
+    },
+    /*
+    lastProduct: async (req, res) => {
+        const product = await productsService.lastProductInDb();
+        const category = await productCategoryService.getByPk(product.productCategoryId);
+
+        res.json({
+            meta: {
+                status: 200,
+                url: "/api/products/categories"
+            },
+            data: {
+                id: product.id,
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                weight: product.weight,
+                category: category.name,
+                image: "http://localhost:3000" + product.image
+            }
+        });
+    },
+    
     search: async (req, res) => {
         const products = await productsService.findByTitle(req.query.name);
 
@@ -91,7 +241,7 @@ const productsApiController = {
 
         res.json("No existen los productos que estas buscando");
     },
-
+    
     update: async (req, res) => {
         await productsService.edit(req.params.id, req.body);
 
@@ -121,7 +271,7 @@ const productsApiController = {
             data: products
         });
     },
-    /*
+    
     byCategory: async (req, res) => {
 
         const promiseProductsByCategory = await productsService.filterByCategory(req.params.id);

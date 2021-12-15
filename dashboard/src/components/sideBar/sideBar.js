@@ -1,5 +1,5 @@
 import React from "react";
-import logoMorfi from "../../assets/images/logo_fondo_verde.jpg";
+import logoMorfi from "../../assets/images/dh-morfi-logo-white.png";
 
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,7 @@ function SideBar() {
       <li className="nav-item active">
         <Link className="nav-link" to="/" exact>
           <i className="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard - Morfi</span>
+          <span>Dashboard</span>
         </Link>
       </li>
 
@@ -46,9 +46,9 @@ function SideBar() {
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link" to="/genres">
+        <Link className="nav-link" to="/products">
           <i className="fas fa-fw fa-table"></i>
-          <span>Genres</span>
+          <span>Products</span>
         </Link>
       </li>
 

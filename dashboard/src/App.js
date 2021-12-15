@@ -8,7 +8,7 @@ import { Switch, Route } from "react-router-dom";
 import ContentWrapper from "./components/contentWrapper/contentWrapper";
 import ContentRowTop from "./components/contentWrapper/contentRowTop/contentRowTop";
 import MovieInDb from "./components/contentWrapper/movieDetail/movieInDb";
-import GenresInDb from "./components/contentWrapper/categoriesInDb/genresInDb";
+import ProductsInDb from "./components/productsInDb/productsInDb";
 import Error404 from "./components/error/error404";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
             <Route path="/" exact component={ContentWrapper}></Route>
             <Route path="/dbData" component={ContentRowTop}></Route>
             <Route path="/movie" component={MovieInDb}></Route>
-            <Route path="/genres" component={GenresInDb}></Route>
+            <Route path="/products" component={ProductsInDb}></Route>
             <Route component={Error404}></Route>
           </Switch>
         </div>
