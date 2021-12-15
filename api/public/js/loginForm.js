@@ -1,98 +1,78 @@
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
+const formulario = document.getElementById('formulario');
+const inputs = document.querySelectorAll('#formulario input');
 
-const errorTiltle = document.querySelector("#error-title");
-const errorList = document.querySelector("#errors");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
-const inputs = [
-  email,
-  password
-];
-
-email.focus();
-
-const form = document.querySelector(".login-form");
-
-form.addEventListener("submit", (event) => {
-
-  const errors = formIsInvalid();
-
-  if (errors.length > 0) {
-
-    console.log("Formulario es invalido!");
-
-    event.preventDefault();
-
-    errorTiltle.classList.remove("hidden");
-    errorTiltle.innerHTML = "ERROR";
-
-    errorList.classList.remove("hidden");
-    errorList.innerHTML = "";
-
-    for (const error of errors) {
-      errorList.innerHTML += `<li>${error}</li>`;
-    }
-
-  } else {
-
-    errorTiltle.classList.add("hidden");
-
-    errorList.classList.add("hidden");
-    errorList.innerHTML = "";
-
-  }
-
-});
-
-function formIsInvalid() {
-  
-  let errors = [];
-
-  const emailEmpty = validateInput(email, isEmpty, "El Email no puede estar vacio");
-  const passwordEmpty = validateInput(password, isEmpty, "La Contraseña no puede estar vacia");
-
-  const inValidEmail = validateInput(email, notMail, "Email invalido");
-
-  errors.push(emailEmpty);
-  
-  if (!emailEmpty) {
-    errors.push(inValidEmail);
-  }
-  
-  errors.push(passwordEmpty);
-  
-  console.log(errors);
-  return errors.filter((msg) => msg != null);
-
-}
-
-function isEmpty(input) {
-  return input.value.trim() == "";
+const campos = {
+	email: false,
+	password: false,
 }
 
 function notMail (input) {
+	let isCharMail = /\S+@\S+\.\S+/;
 
-  let isCharMail = /\S+@\S+\.\S+/;
-
-  if(! isCharMail.test(input.value)){
-    return true;
-  }
-  
+	if (! isCharMail.test(input.value) ) {
+		return true;
+	}
 }
 
-function validateInput(input, validationFunction, message) {
-  
-  if (validationFunction(input)) {
-    
-    input.classList.add("is-invalid");
-    return message;
-    
-  } else {
-    
-    input.classList.remove("is-invalid");
-    input.classList.add("is-valid");
-    return null;
+function weakPassword (input) {
+	let inputValue = input.value;
 
-  }
+	//let containsDigits = /[0-9]/;
+	//let containsUpper = /[A-Z]/;
+	let containsLower = /[a-z]/;
+	//let containsSpecialCharacter = /\W/;
 
+	let passwordLength = inputValue.length >= 8;
+	//let passwordDigits = containsDigits.test(inputValue);
+	//let passwordUpper = containsUpper.test(inputValue);
+	let passwordLower = containsLower.test(inputValue);
+	//let passwordSpecialCharacter = containsSpecialCharacter.test(inputValue);
+
+	if(!passwordLength || !passwordLower ) {
+		return true;
+	}
 }
+
+const validarFormulario = (e) => {
+	switch (e.target.name) {
+		case "email":
+			validarCampo(notMail, e.target, 'email');
+		break;
+		case "password":
+			validarCampo(weakPassword, e.target, 'password');
+		break;
+	}
+}
+
+const validarCampo = (validateFunction, input, campo) => {
+	if(!validateFunction(input)){
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+		campos[campo] = true;
+	} else {
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+		campos[campo] = false;
+	}
+}
+
+inputs.forEach((input) => {
+	input.addEventListener('keyup', validarFormulario);
+	input.addEventListener('blur', validarFormulario);
+});
+
+formulario.addEventListener('submit', (e) => {
+	if(!campos.password && !campos.email ){
+		e.preventDefault();
+		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+	}
+});
