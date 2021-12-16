@@ -1,130 +1,93 @@
-const productName = document.querySelector("#name");
-const description = document.querySelector("#description");
-const price = document.querySelector("#price");
-const weight = document.querySelector("#weight");
-const image = document.querySelector("#image");
+const formulario = document.getElementById('formulario');
+const inputs = document.querySelectorAll('#formulario input');
 
-const errorTiltle = document.querySelector("#error-title");
-const errorList = document.querySelector("#errors");
+const name = document.getElementById("name");
+const description = document.getElementById("description");
+const weight = document.getElementById("weight");
+const price = document.getElementById("price");
 
-const requiredInputs = [
-  productName,
-  description,
-  price,
-  weight
-];
-
-productName.focus();
-
-const form = document.querySelector(".formulario");
-
-form.addEventListener("submit", (event) => {
-
-  const errors = formIsInvalid();
-
-  if (errors.length > 0) {
-
-    console.log("Formulario es invalido!");
-
-    event.preventDefault();
-
-    errorTiltle.classList.remove("hidden");
-    errorTiltle.innerHTML = "ERROR";
-
-    errorList.classList.remove("hidden");
-    errorList.innerHTML = "";
-
-    for (const error of errors) {
-      errorList.innerHTML += `<li>${error}</li>`;
-    }
-
-  } else {
-
-    errorTiltle.classList.add("hidden");
-
-    errorList.classList.add("hidden");
-    errorList.innerHTML = "";
-
-  }
-
-});
-
-function formIsInvalid() {
+const campos = {
+	name: false,
+	description: false,
+	weight: false,
+	price: false,
+}
   
-  let errors = [];
-
-  const productNameEmpty = validateInput(productName, isEmpty, "El Nombre no puede estar vacio");
-  const descriptionEmpty = validateInput(description, isEmpty, "La Descripción no puede estar vacia");
-  const priceEmpty = validateInput(price, isEmpty, "El Precio no puede estar vacio");
-  const weightEmpty = validateInput(weight, isEmpty, "El Peso no puede estar vacio");
-
-  const productNameLength = validateInput(productName, isLength, "El Nombre debe ser mas largo");
-  const descriptionLength = validateInput(description, isLength, "La Descripción ser mas larga");
-  const inValidImage = validateInput(image, inValidFile, "Archivo de Imagen invalido");
-
-  errors.push(productNameEmpty);
-
-  if (!productNameEmpty) {
-    errors.push(productNameLength);
-  }
-
-  errors.push(descriptionEmpty);
-
-  if (!descriptionEmpty) {
-    errors.push(descriptionLength);
-  }
-
-  errors.push(priceEmpty);
-
-  errors.push(weightEmpty);
-
-  errors.push(inValidImage);
-  
-  console.log(errors);
-  return errors.filter((msg) => msg != null);
-
+function notName (input) {
+	return input.value.trim() == "" && input.value.length < 20;
 }
 
-function isEmpty(input) {
-  return input.value.trim() == "";
+function notDescription (input) {
+  return input.value.trim() == "" && input.value.length < 20;
 }
 
-function isLength (input) {
-  if (input == productName) {
-    return input.value.length < 5;
-  } 
-  if (input == description) {
-    return input.value.length < 20;
-  }
+function notNumber (input) {
+	let inputValue = input.value;
+
+	let containsDigits = /[0-9]/;
+
+	let priceDigits = containsDigits.test(inputValue);
+	
+	if(!priceDigits) {
+		return true;
+	}
 }
 
 function inValidFile (input) {
-  
-  let extensions = /(.jpg|.jpeg|.png|.gif)$/i;
+	let extensions = /(.jpg|.jpeg|.png|.gif)$/i;
 
-  if (input.value == "") {
-    return false;
-  }
+	if (input.value == "") {
+		return false;
+	}
 
-  if (!extensions.exec(input.value) ) {
-    return true;
-  }
- 
+	if (!extensions.exec(input.value) ) {
+		return true;
+	}
 }
 
-function validateInput(input, validationFunction, message) {
-  
-  if (validationFunction(input)) {
-    
-    input.classList.add("is-invalid");
-    return message;
-    
-  } else {
-    
-    input.classList.remove("is-invalid");
-    input.classList.add("is-valid");
-    return null;
-
-  }
-
+const validarFormulario = (e) => {
+	switch (e.target.name) {
+		case "name":
+			validarCampo(notName, e.target, 'name')
+		break;
+		case "description":
+			validarCampo(notDescription, e.target, 'description');
+		break;
+		case "weight":
+			validarCampo(notNumber, e.target, 'weight');
+		break;
+		case "price":
+			validarCampo(notNumber, e.target, 'price');
+		break;
+	}
 }
+
+const validarCampo = (validateFunction, input, campo) => {
+	if(!validateFunction(input)){
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+		campos[campo] = true;
+	} else {
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+		campos[campo] = false;
+	}
+}
+
+inputs.forEach((input) => {
+	input.addEventListener('keyup', validarFormulario);
+	input.addEventListener('blur', validarFormulario);
+});
+
+formulario.addEventListener('submit', (e) => {
+	if(!campos.name && !campos.description && !campos.price && !campos.weight ){
+		e.preventDefault();
+		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+	}
+});

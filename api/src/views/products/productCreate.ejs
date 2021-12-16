@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/styles-productForm.css">
+    <link rel="stylesheet" href="/css/styles-form.css">
     <script defer src="/js/productForm.js"></script>
 </head>
 <body>
@@ -10,50 +10,71 @@
         <%- include("../partials/header.ejs") %>
     </header>
     <main>
-        <section>            
-            <div class="container">
-                <form action="/products" class="formulario" method="POST" enctype="multipart/form-data">
-                    <div class="title">Crear Producto</div>
-                    <br>
-                    <div class="product-details">
-                        <div class="input-box">
-                            <input type="text" name="name" id="name" placeholder="Nombre">
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <input type="text" name="description" id="description" placeholder="Descripción">
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <input type="file" name="image" id="image" class="input-img" accept="image/*">
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <select name="productCategoryId">
-                                <option selected disabled="">Selecciona una categoria</option>
-                                <% for( category of categories ) { %>
-                                    <option value="<%= category.id %>"><%= category.name %></option>
-                                <% } %> 
-                            </select> 
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <input type="number" name="weight" id="weight" placeholder="kg">
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <input type="number" name="price" id="price" placeholder="$">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="button-container">
-                        <div class="button">
-                            <input type="submit" value="Guardar">
-                        </div>
-                    </div>
-                </form>
+        <form action="/products" class="formulario" id="formulario" method="POST" enctype="multipart/form-data">
+            <div class="formulario__grupo" id="grupo__name">
+                <label for="name" class="formulario__label">Nombre</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="name" id="name">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El Nombre debe tener al menos 2 caracteres</p>
             </div>
-        </section>
+            
+            <div class="formulario__grupo" id="grupo__description">
+                <label for="description" class="formulario__label">Descripción</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="description" id="description">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La Descripción debe tener al menos 20 caracteres</p>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__weight">
+                <label for="weight" class="formulario__label">Peso</label>
+                <div class="formulario__grupo-input">
+                    <input type="number" class="formulario__input" name="weight" id="weight" placeholder="kg">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El Peso debe ser un numero decimal</p>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__price">
+                <label for="price" class="formulario__label">Nombre</label>
+                <div class="formulario__grupo-input">
+                    <input type="number" class="formulario__input" name="price" id="price" placeholder="$">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El Precio debe ser un numero</p>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__productCategory">
+                <label for="productCategoryId" class="formulario__label">Categoria</label>
+                <div class="formulario__grupo-input">
+                    <select name="productCategoryId">
+                        <option selected disabled="">Selecciona una categoria</option>
+                        <% for( category of categories ) { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% } %> 
+                    </select> 
+                </div>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__image">
+                <label for="image" class="formulario__label">Imagen</label>
+                <div class="formulario__grupo-input">
+                    <input type="file" name="image" id="image" class="input-img" accept="image/*">
+                </div>
+                <p class="formulario__input-error">El Precio debe ser un numero</p>
+            </div>
+            
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Rellena el formulario correctamente. </p>
+            </div>
+
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn">Crear</button>
+            </div>
+        </form>
         <div class="validation-errors">
             <div class="frontend-validations">
                 <p class="error-title" id="error-title"></p>
