@@ -12,7 +12,7 @@ router.get("/carnes", productsAPIController.findCarnes);
 router.get("/pescados", productsAPIController.findPescados);
 router.get("/pollos", productsAPIController.findPollos);
 router.get("/veganos", productsAPIController.findVeganos);
-//router.get("/lastproduct", productsAPIController.lastProduct);
+router.get("/lastproduct", productsAPIController.lastProduct);
 router.get('/:id', productsAPIController.detail);
 
 //Update

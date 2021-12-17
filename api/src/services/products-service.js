@@ -1,4 +1,4 @@
-const { Product } = require("../database/models");
+const { Product, sequelize } = require("../database/models");
 
 const productsService = {
 
@@ -62,7 +62,11 @@ const productsService = {
     },
 
     lastProductInDb : async (req, res) => { 
-        return await Product.findAll({where: {updatedAt: null}});
+        return await Product.findAll({
+            order: [
+                ["createdAt", "DESC"]
+            ],
+        });
     },
 
     findByCategory: async (category, pageSize, page) => {

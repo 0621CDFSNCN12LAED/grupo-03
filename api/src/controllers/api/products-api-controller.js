@@ -203,9 +203,10 @@ const productsApiController = {
             }))
         });
     },
-    /*
+    
     lastProduct: async (req, res) => {
-        const product = await productsService.lastProductInDb();
+        const products = await productsService.lastProductInDb();
+        const product = products[0];
         const category = await productCategoryService.getByPk(product.productCategoryId);
 
         res.json({
@@ -224,7 +225,7 @@ const productsApiController = {
             }
         });
     },
-    
+    /*
     search: async (req, res) => {
         const products = await productsService.findByTitle(req.query.name);
 

@@ -1,11 +1,11 @@
 import ContentCard from "../contentCard/contentCard";
-import MovieDetail from "./movieDetail";
+import ProductDetail from "./productDetail";
 
 function MovieInDb () {
     return(
         <div>
             <ContentCard title="Last movie in Data Base">
-              <MovieDetail />
+              <ProductDetail />
             </ContentCard>
         </div>
     )
