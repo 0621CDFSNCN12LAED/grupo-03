@@ -1136,8 +1136,8 @@ INSERT INTO
 VALUES
   (
     DEFAULT,
-    657.1,
-    1.83,
+    1000,
+    1,
     1,
     40,
     DEFAULT,
@@ -1146,7 +1146,7 @@ VALUES
   ),
   (
     DEFAULT,
-    2187.89,
+    2,
     2.37,
     2,
     40,
@@ -1156,8 +1156,8 @@ VALUES
   ),
   (
     DEFAULT,
-    1875.96,
-    4.91,
+    3000,
+    3,
     3,
     81,
     DEFAULT,
@@ -1166,20 +1166,90 @@ VALUES
   ),
   (
     DEFAULT,
-    2271.55,
-    2.81,
+    4000,
     4,
-    40,
+    4,
+    81,
     DEFAULT,
     DEFAULT,
     DEFAULT
   ),
   (
     DEFAULT,
-    565.19,
-    4.33,
+    5000,
+    5,
     5,
     1,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    6000,
+    6,
+    1,
+    1,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    7000,
+    7,
+    2,
+    4,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    8000,
+    8,
+    3,
+    4,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    9000,
+    9,
+    4,
+    10,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    10000,
+    10,
+    5,
+    10,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    11000,
+    11,
+    4,
+    50,
+    DEFAULT,
+    DEFAULT,
+    DEFAULT
+  ),
+  (
+    DEFAULT,
+    12000,
+    12,
+    5,
+    60,
     DEFAULT,
     DEFAULT,
     DEFAULT

@@ -5,6 +5,7 @@ const productsUrl = "/api/products";
 const usersUrl = "/api/users";
 const categoriesUrl = "/api/products/categories";
 const salesUrl = "/api/sales";
+const soldProductsUrl = "/api/sales/products";
 
 function ContentRowTop() {
 
@@ -12,6 +13,7 @@ function ContentRowTop() {
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
   const [sales, setSales] = useState([]);
+  const [soldProducts, setSoldProducts] = useState([]);
 
 	async function searchProducts () {
 		const response = await fetch(productsUrl);
@@ -37,11 +39,18 @@ function ContentRowTop() {
 		setSales(result.meta);
 	}
 
+  async function searchSoldProducts () {
+		const response = await fetch(soldProductsUrl);
+		const result = await response.json();
+		setSoldProducts(result.meta);
+	}
+
 	useEffect( () => {
 		searchProducts();	
     searchUsers();
     searchCategories();
     searchSales();
+    searchSoldProducts();
 	}, []);
 
   return (
@@ -69,6 +78,12 @@ function ContentRowTop() {
         icon="fa-hand-holding-usd"
         color="success"
         value={sales.count}
+      />
+      <ValueCard
+        title="Total Sold Products"
+        icon="fa-hand-holding-usd"
+        color="success"
+        value={soldProducts.count}
       />
     </div>
   );
