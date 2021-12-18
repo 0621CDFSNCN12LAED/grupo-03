@@ -62,11 +62,12 @@ const productsService = {
     },
 
     lastProductInDb : async (req, res) => { 
-        return await Product.findAll({
+        const products = await Product.findAll({
             order: [
                 ["createdAt", "DESC"]
             ],
         });
+        return products[0];
     },
 
     findByCategory: async (category, pageSize, page) => {

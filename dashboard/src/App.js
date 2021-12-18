@@ -15,11 +15,11 @@ function App() {
   return (
     <div id="wrapper">
       <SideBar />
-      <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
           <TopNavBar />
           <Switch>
-            <Route path="/" exact component={ContentWrapper}></Route>
+            <Route exact path="/" component={ContentWrapper}></Route>
             <Route path="/dbData" component={ContentRowTop}></Route>
             <Route path="/movie" component={ProductInDb}></Route>
             <Route path="/products" component={ProductsInDb}></Route>

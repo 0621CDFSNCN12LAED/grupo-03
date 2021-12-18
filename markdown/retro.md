@@ -61,3 +61,27 @@ Hacer mas : Mejorar los estilos de las vistas, basarse en los sitios que elegi
 Hacer menos: Comunicarse por whatsapp
 
 Dejar de hacer: Dejar detalles para el final, al igual que hacer los standups al final del sprint, no dividir bien las tareas a traves de trello
+
+Retrospectiva sprint 6:
+
+Comenzar a hacer: boceto del sitio y realizar los standups a tiempo
+
+Seguir haciendo: Completar las tareas a tiempo y de manera correcta
+
+Hacer mas : Mejorar los estilos de las vistas, basarse en los sitios que elegimos como referencia y hacer reuniones
+
+Hacer menos: Comunicarse por whatsapp
+
+Dejar de hacer: Dejar los standups al final del sprint
+
+Retrospectiva sprint 7:
+
+Comenzar a hacer: los estilos de las vistas de los formularios con js del frontend
+
+Seguir haciendo: Completar las tareas a tiempo y de manera correcta
+
+Hacer mas: Mejorar los estilos de las vistas, basarse en los sitios que elegimos como referencia y hacer reuniones
+
+Hacer menos: Comunicarse por whatsapp
+
+Dejar de hacer: Dejar los standups al final del sprint

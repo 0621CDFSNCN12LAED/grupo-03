@@ -4,12 +4,14 @@ import ValueCard from "./valueCard/valueCard";
 const productsUrl = "/api/products";
 const usersUrl = "/api/users";
 const categoriesUrl = "/api/products/categories";
+const salesUrl = "/api/sales";
 
 function ContentRowTop() {
 
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [sales, setSales] = useState([]);
 
 	async function searchProducts () {
 		const response = await fetch(productsUrl);
@@ -29,14 +31,21 @@ function ContentRowTop() {
 		setCategories(result.meta);
 	}
 
+  async function searchSales () {
+		const response = await fetch(salesUrl);
+		const result = await response.json();
+		setSales(result.meta);
+	}
+
 	useEffect( () => {
 		searchProducts();	
     searchUsers();
     searchCategories();
+    searchSales();
 	}, []);
 
   return (
-    <div class="row">
+    <div className="row">
       <ValueCard
         title="Total Users"
         icon="fa-user"
@@ -51,9 +60,15 @@ function ContentRowTop() {
       />
       <ValueCard
         title="Total Categories"
-        icon="fa-cutlery"
+        icon="fa-utensils"
         color="warning"
         value={categories.count}
+      />
+      <ValueCard
+        title="Total Sales"
+        icon="fa-hand-holding-usd"
+        color="success"
+        value={sales.count}
       />
     </div>
   );

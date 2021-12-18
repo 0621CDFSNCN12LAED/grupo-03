@@ -93,29 +93,29 @@ class CategoriesInDb extends Component {
     console.log("%cEvent => Render","color: cyan");
 
     if(!this.state.categories){
-      return <div class="row">Loading...</div>
+      return <div className="row">Loading...</div>
     }
 
     return (
-      <div class="row">
-        <div class="col-lg-6 mb-4">
-          <div class="card bg-dark text-white shadow">
-            <div class="card-body">{this.state.carnes}: {this.state.carnesProducts} products</div>
+      <div className="row">
+        <div className="col-lg-6 mb-4">
+          <div className="card bg-dark text-white shadow">
+            <div className="card-body">{this.state.carnes}: {this.state.carnesProducts} products</div>
           </div>
         </div>
-        <div class="col-lg-6 mb-4">
-          <div class="card bg-dark text-white shadow">
-            <div class="card-body">{this.state.pescados}: {this.state.pescadosProducts} products</div>
+        <div className="col-lg-6 mb-4">
+          <div className="card bg-dark text-white shadow">
+            <div className="card-body">{this.state.pescados}: {this.state.pescadosProducts} products</div>
           </div>
         </div>
-        <div class="col-lg-6 mb-4">
-          <div class="card bg-dark text-white shadow">
-            <div class="card-body">{this.state.pollos}: {this.state.pollosProducts} products</div>
+        <div className="col-lg-6 mb-4">
+          <div className="card bg-dark text-white shadow">
+            <div className="card-body">{this.state.pollos}: {this.state.pollosProducts} products</div>
           </div>
         </div>
-        <div class="col-lg-6 mb-4">
-          <div class="card bg-dark text-white shadow">
-            <div class="card-body">{this.state.veganos}: {this.state.veganosProducts} products</div>
+        <div className="col-lg-6 mb-4">
+          <div className="card bg-dark text-white shadow">
+            <div className="card-body">{this.state.veganos}: {this.state.veganosProducts} products</div>
           </div>
         </div>
       </div>

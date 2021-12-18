@@ -51,18 +51,18 @@ class ProductsInDb extends Component {
     console.log("%cEvent => Render","color: cyan");
 
     if(!this.state.products){
-      return <div class="row">Loading...</div>
+      return <div className="row">Loading...</div>
     }
 
     return (
       <div>
         <ContentCard title="Products in Data Base">
-          <div class="row">
+          <div className="row">
             {this.state.products.map((product) => {
               return (
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-dark text-white shadow">
-                    <div class="card-body">{product.name}</div>
+                <div className="col-lg-6 mb-4">
+                  <div className="card bg-dark text-white shadow">
+                    <div className="card-body">{product.name}</div>
                   </div>
                 </div>
               );

@@ -205,8 +205,7 @@ const productsApiController = {
     },
     
     lastProduct: async (req, res) => {
-        const products = await productsService.lastProductInDb();
-        const product = products[0];
+        const product = await productsService.lastProductInDb();
         const category = await productCategoryService.getByPk(product.productCategoryId);
 
         res.json({

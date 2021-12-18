@@ -9,8 +9,8 @@ const usersApiController = {
 
         const {count, rows} = await usersService.findAndCountAll(pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/products?page=${page + 1}` : null;
-        const prevPage = page > 0 ? `/api/products?page=${page - 1}` : null;
+        const nextPage = offset + pageSize < count ? `/api/products?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {

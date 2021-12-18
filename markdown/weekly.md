@@ -48,3 +48,35 @@ Que hizo ayer: Finalizar el crud integrado con la base de datos, utilizando sequ
 Si se encontró con algún impedimento: Tuvimos dificultades con la carga de imagenes en la edicion de usuarios y productos, el unico detalle que no funciona en el crud
 
 Que va hacer hoy: Resolver la carga de imagenes en la edicion de usuarios y productos, realizar una breve retrospectiva del sprint 5 e implementar daily/weekly standups
+
+24/11/2021
+
+Que hizo ayer: Finalizar las validaciones del backend
+
+Si se encontró con algún impedimento: Verificando que en el registro de usuario no se repita el nuevo mail con uno ya existente en la base de datos y que en la creacion/edicion de producto se envie una categoria existente en la base de datos. Lo pudimos resolver con la funcion .custom()
+
+Que va hacer hoy: Empezar las validaciones del frontend
+
+29/11/2021
+
+Que hizo ayer: Finalizar las validaciones del frontend
+
+Si se encontró con algún impedimento: Tuvimos que dejar sin estilo las vistas de los formularios para que funcione como queriamos las validaciones
+
+Que va hacer hoy: Empezar a construir un css que se adapte a las validaciones del frontend que queremos ver, mover el proyecto de express a una carpeta llamada api e instalar react para implementar el dashboard
+
+10/12/2021
+
+Que hizo ayer: Finalizar el paginado de las apis, al igual que los paneles del total de productos, usuarios y categorias
+
+Si se encontró con algún impedimento: En traer el ultimo producto/usuario creado en la base de datos y traer la cantidad total de productos por categoria
+
+Que va hacer hoy: Implementar los estilos en las vistas de las validaciones del frontend y y traer la cantidad total de productos por categoria
+
+16/12/2021
+
+Que hizo ayer: Implementamos los estilos en las vistas de las validaciones del frontend y y trajimos la cantidad total de productos por categoria
+
+Si se encontró con algún impedimento: En traer el ultimo producto/usuario creado en la base de datos
+
+Que va hacer hoy: Traer el ultimo producto/usuario creado en la base de datos y realizar los paneles opcionales del dashboard

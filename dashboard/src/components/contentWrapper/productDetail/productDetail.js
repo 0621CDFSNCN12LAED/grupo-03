@@ -17,9 +17,9 @@ function ProductDetail(props) {
   
   return (
     <>
-      <div class="text-center">
+      <div className="text-center">
         <img
-          class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+          className="img-fluid px-3 px-sm-4 mt-3 mb-4"
           style={{ width: "40rem" }}
           src={product.image}
           alt="Star Wars - Mandalorian"
@@ -28,7 +28,7 @@ function ProductDetail(props) {
       <p>
         {product.name}
       </p>
-      <a class="btn btn-danger" target="_blank" rel="nofollow" href="/">
+      <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">
         View movie detail
       </a>
     </>
