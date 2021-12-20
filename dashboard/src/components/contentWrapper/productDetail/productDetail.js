@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const productUrl = "/api/products/lastproduct";
+const lastproductAPI = "/api/products/last-product";
 
 function ProductDetail(props) {
   const [product, setProduct] = useState([]);
 
   async function searchProduct () {
-		const response = await fetch(productUrl);
+		const response = await fetch(lastproductAPI);
 		const result = await response.json();
 		setProduct(result.data);
 	}
@@ -22,7 +22,7 @@ function ProductDetail(props) {
           className="img-fluid px-3 px-sm-4 mt-3 mb-4"
           style={{ width: "40rem" }}
           src={product.image}
-          alt="Star Wars - Mandalorian"
+          alt={product.name}
         />
       </div>
       <p>

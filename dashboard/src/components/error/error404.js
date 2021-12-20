@@ -1,9 +1,10 @@
 //import { useHistory} from "react-router-dom";
+import imgError404 from "../../assets/images/404.jpg";
 
 export default function Error404() {
   return (
-    <div>
-        <h1>ERROR 404 - Page Not Found</h1>
+    <div> 
+      <img src={imgError404} alt="Error 404 - Page Not Found"/>     
     </div>
   );
 }

@@ -71,9 +71,54 @@ const salesApiController = {
             },
             data: rows
         });
+    },
+
+    lastSoldProducts: async (req, res) => {
+        const purchasesProducts = await purchaseProductService.lastSoldProducts();
+        
+        res.json({
+            meta: {
+                status: 200,
+                url: "/api/sales/products/last-sold-products"
+            },
+            data: purchasesProducts.map((purchaseProduct) => ({
+                id: purchaseProduct.id,
+                purchasePrice: purchaseProduct.purchasePrice,
+                quantity: purchaseProduct.quantity,
+                sales: {
+                    id: purchaseProduct.compras.id,
+                    date: purchaseProduct.compras.date,
+                    totalPrice: purchaseProduct.compras.totalPrice,
+                    totalQuantity: purchaseProduct.compras.totalQuantity,
+                    userId: purchaseProduct.compras.userId
+                },
+                products: {
+                    id: purchaseProduct.productos.id,
+                    name: purchaseProduct.productos.name,
+                    description: purchaseProduct.productos.description,
+                    price: purchaseProduct.productos.price,
+                    weight: purchaseProduct.productos.weight,
+                    image: purchaseProduct.productos.image,
+                    productCategoryId: purchaseProduct.productos.productCategoryId
+                }
+            }))
+        });
+    },
+
+    mostSoldProducts: async (req, res) => {
+        const products = await purchaseProductService.mostSoldProducts();
+
+        res.json({
+            meta: {
+                status: 200,
+                count: products.length,
+                url: "api/sales/products/most-sold-products"
+            },
+            data: products
+        }).catch((error) => {
+            res.send(error)
+        });
     }
-
-
 
 };
 

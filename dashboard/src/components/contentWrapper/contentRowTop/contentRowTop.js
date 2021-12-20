@@ -69,19 +69,19 @@ function ContentRowTop() {
       />
       <ValueCard
         title="Total Categories"
-        icon="fa-utensils"
+        icon="fa-clipboard-list"
         color="warning"
         value={categories.count}
       />
       <ValueCard
         title="Total Sales"
         icon="fa-hand-holding-usd"
-        color="success"
+        color="primary"
         value={sales.count}
       />
       <ValueCard
         title="Total Sold Products"
-        icon="fa-hand-holding-usd"
+        icon="fa-cart-arrow-down"
         color="success"
         value={soldProducts.count}
       />

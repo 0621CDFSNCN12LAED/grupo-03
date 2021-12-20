@@ -32,9 +32,9 @@ function SideBar() {
       <div className="sidebar-heading">Actions</div>
 
       <li className="nav-item">
-        <Link className="nav-link" to="/dbData">
-          <i className="fas fa-fw fa-folder"></i>
-          <span>Data</span>
+        <Link className="nav-link" to="/search-products">
+          <i className="fas fa-fw fa-search"></i>
+          <span>Search Products</span>
         </Link>
       </li>
 
@@ -47,7 +47,7 @@ function SideBar() {
 
       <li className="nav-item">
         <Link className="nav-link" to="/products">
-          <i className="fas fa-fw fa-table"></i>
+          <i className="fas fa-fw fa-shopping-cart"></i>
           <span>Products</span>
         </Link>
       </li>

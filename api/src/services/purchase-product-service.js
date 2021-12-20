@@ -18,4 +18,22 @@ module.exports = {
     });
   },
 
+  lastSoldProducts: async () => { 
+    return await PurchaseProduct.findAll({
+      order: [
+        ["createdAt", "DESC"]
+      ],
+      limit: 5,
+      include: [{association: "compras"}, {association: "productos"}]
+    });
+  },
+
+  mostSoldProducts: async () => {
+    return await PurchaseProduct.findAll({
+      order: [
+        sequelize.fn("max", sequelize.col("productId"))
+      ]
+    });
+  }
+
 };

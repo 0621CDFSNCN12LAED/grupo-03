@@ -1,18 +1,6 @@
-import ContentCard from "../contentWrapper/contentCard/contentCard";
-/*import CategoriesInDb from "./categoriesInDb";
-
-function GenresInDb () {
-    return(
-        <div>
-            <ContentCard title="Products in Data Base">
-              <CategoriesInDb />
-            </ContentCard>
-        </div>
-    )
-}
-
-export default GenresInDb;*/
 import React, {Component} from "react";
+
+import ContentCard from "../contentWrapper/contentCard/contentCard";
 
 const productsUrl = "/api/products";
 
@@ -21,7 +9,8 @@ class ProductsInDb extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: null
+      products: null,
+      page: 0,
     }
     console.log("Event => Constructor");
   }
@@ -40,11 +29,28 @@ class ProductsInDb extends Component {
   }
 
   async fetchProducts() {
-    const result = await fetch(productsUrl);
-    const response = await result.json();
-    const data = await response.data;
+    const response = await fetch(productsUrl);
+    const result = await response.json();
+    const data = await result.data;
     this.setState({products: data});
   };
+
+  nextPage = async () => {
+    await this.setState({page: this.state.page + 1});
+    this.fetchMoreProducts();
+  }
+
+  previousPage = async () => {
+    await this.setState({page: this.state.page - 1});
+    this.fetchMoreProducts();
+  }
+
+  async fetchMoreProducts() {
+    const response = await fetch(productsUrl + `?page=${this.state.page}`);
+    const result = await response.json();
+    const data = await result.data;
+    this.setState({products: data});
+  }
 
   render() {
 
@@ -58,16 +64,18 @@ class ProductsInDb extends Component {
       <div>
         <ContentCard title="Products in Data Base">
           <div className="row">
-            {this.state.products.map((product) => {
+            {this.state.products.map((product, i) => {
               return (
                 <div className="col-lg-6 mb-4">
-                  <div className="card bg-dark text-white shadow">
+                  <div key={i} className="card bg-dark text-white shadow">
                     <div className="card-body">{product.name}</div>
                   </div>
                 </div>
               );
             })}
           </div>
+          <button onClick={this.previousPage}>Prev</button>
+          <button onClick={this.nextPage}>Next</button>
         </ContentCard>
       </div>
     );

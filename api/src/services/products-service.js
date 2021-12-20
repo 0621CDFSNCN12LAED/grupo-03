@@ -1,4 +1,6 @@
-const { Product, sequelize } = require("../database/models");
+const { Product } = require("../database/models");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const productsService = {
 
@@ -23,7 +25,7 @@ const productsService = {
 
     },
 
-    findByTitle: async (name) => {
+    findByName: async (name) => {
         return await Product.findAll({
             where: {
                 name: {

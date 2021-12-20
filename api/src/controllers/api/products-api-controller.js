@@ -39,7 +39,7 @@ const productsApiController = {
                 id: product.id,
                 name: product.name, 
                 description: product.description,
-                detail: `/api/products/${product.id}`
+                detail: `/api/products/detail/${product.id}`
             }))
         });
     },
@@ -52,7 +52,7 @@ const productsApiController = {
             res.json({
                 meta: {
                     status: 200,
-                    url: "/api/products/" + req.params.id
+                    url: "/api/products/detail/" + req.params.id
                 },
                 data: {
                     id: product.id,
@@ -69,7 +69,7 @@ const productsApiController = {
         res.json({
             meta: {
                 status: 200,
-                url: "api/products/" + req.params.id
+                url: "api/products/detail/" + req.params.id
             },
             data: "No existe el producto con id: " + req.params.id
         });
@@ -95,8 +95,8 @@ const productsApiController = {
         
         const {count, rows} = await productsService.findByCategory(1, pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/products/carnes?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/carnes?page=${parseInt(page) - 1}` : null;
+        const nextPage = offset + pageSize < count ? `/api/products/categories/carnes?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/categories/carnes?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {
@@ -104,7 +104,7 @@ const productsApiController = {
                 count: count,
                 page: page,
                 pageSize: pageSize,
-                url: `/api/products/carnes?page=${page}`,
+                url: `/api/products/categories/carnes?page=${page}`,
                 nextUrl: nextPage,
                 previousUrl: prevPage
             },
@@ -124,8 +124,8 @@ const productsApiController = {
         
         const {count, rows} = await productsService.findByCategory(2, pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/products/pescados?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/pescados?page=${parseInt(page) - 1}` : null;
+        const nextPage = offset + pageSize < count ? `/api/products/categories/pescados?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/categories/pescados?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {
@@ -133,7 +133,7 @@ const productsApiController = {
                 count: count,
                 page: page,
                 pageSize: pageSize,
-                url: `/api/products/pescados?page=${page}`,
+                url: `/api/products/categories/pescados?page=${page}`,
                 nextUrl: nextPage,
                 previousUrl: prevPage
             },
@@ -153,8 +153,8 @@ const productsApiController = {
         
         const {count, rows} = await productsService.findByCategory(3, pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/products/pollos?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/pollos?page=${parseInt(page) - 1}` : null;
+        const nextPage = offset + pageSize < count ? `/api/products/categories/pollos?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/categories/pollos?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {
@@ -162,7 +162,7 @@ const productsApiController = {
                 count: count,
                 page: page,
                 pageSize: pageSize,
-                url: `/api/products/pollos?page=${page}`,
+                url: `/api/products/categories/pollos?page=${page}`,
                 nextUrl: nextPage,
                 previousUrl: prevPage
             },
@@ -182,8 +182,8 @@ const productsApiController = {
         
         const {count, rows} = await productsService.findByCategory(4, pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/products/veganos?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/veganos?page=${parseInt(page) - 1}` : null;
+        const nextPage = offset + pageSize < count ? `/api/products/categories/veganos?page=${parseInt(page) + 1}` : null;
+        const prevPage = page > 0 ? `/api/products/categories/veganos?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {
@@ -191,7 +191,7 @@ const productsApiController = {
                 count: count,
                 page: page,
                 pageSize: pageSize,
-                url: `/api/products/veganos?page=${page}`,
+                url: `/api/products/categories/veganos?page=${page}`,
                 nextUrl: nextPage,
                 previousUrl: prevPage
             },
@@ -211,7 +211,7 @@ const productsApiController = {
         res.json({
             meta: {
                 status: 200,
-                url: "/api/products/categories"
+                url: "/api/products/last-product"
             },
             data: {
                 id: product.id,
@@ -224,16 +224,16 @@ const productsApiController = {
             }
         });
     },
-    /*
+    
     search: async (req, res) => {
-        const products = await productsService.findByTitle(req.query.name);
+        const products = await productsService.findByName(req.query.name);
 
         if (products.length > 0) {
             res.json({
                 meta: {
                     status: 200,
                     count: products.length,
-                    url: "api/products/search?name=" + req.query.name
+                    url: "/api/products/search?name=" + req.query.name
                 },
                 data: products
             });
@@ -241,7 +241,7 @@ const productsApiController = {
 
         res.json("No existen los productos que estas buscando");
     },
-    
+    /*
     update: async (req, res) => {
         await productsService.edit(req.params.id, req.body);
 
@@ -251,7 +251,7 @@ const productsApiController = {
             meta: {
                 status: 200,
                 count: products.length,
-                url: "api/products"
+                url: "/api/products"
             },
             data: products
         });
@@ -266,23 +266,11 @@ const productsApiController = {
             meta: {
                 status: 200,
                 count: products.length,
-                url: "api/products"
+                url: "/api/products"
             },
             data: products
         });
     },
-    
-    byCategory: async (req, res) => {
-
-        const promiseProductsByCategory = await productsService.filterByCategory(req.params.id);
-        const promiseCategories = await productCategoryService.getAll();
-
-        const promiseArray = [promiseProductsByCategory, promiseCategories];
-        const [products, categories] = await Promise.all(promiseArray);
-
-         
-
-    }
     */
 };
 

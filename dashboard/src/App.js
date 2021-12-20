@@ -6,7 +6,7 @@ import Footer from "./components/footer/footer";
 
 import { Switch, Route } from "react-router-dom";
 import ContentWrapper from "./components/contentWrapper/contentWrapper";
-import ContentRowTop from "./components/contentWrapper/contentRowTop/contentRowTop";
+import SearchProducts from "./components/searchProducts/searchProducts";
 import ProductInDb from "./components/contentWrapper/productDetail/productInDb";
 import ProductsInDb from "./components/productsInDb/productsInDb";
 import Error404 from "./components/error/error404";
@@ -20,7 +20,7 @@ function App() {
           <TopNavBar />
           <Switch>
             <Route exact path="/" component={ContentWrapper}></Route>
-            <Route path="/dbData" component={ContentRowTop}></Route>
+            <Route path="/search-products" component={SearchProducts}></Route>
             <Route path="/movie" component={ProductInDb}></Route>
             <Route path="/products" component={ProductsInDb}></Route>
             <Route component={Error404}></Route>

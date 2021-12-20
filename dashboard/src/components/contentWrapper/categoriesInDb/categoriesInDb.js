@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 
 const categoriesUrl = "/api/products/categories";
-const carnesUrl = "api/products/carnes";
-const pescadosUrl = "api/products/pescados";
-const pollosUrl = "api/products/pollos";
-const veganosUrl = "api/products/veganos";
+const carnesUrl = "api/products/categories/carnes";
+const pescadosUrl = "api/products/categories/pescados";
+const pollosUrl = "api/products/categories/pollos";
+const veganosUrl = "api/products/categories/veganos";
 
 class CategoriesInDb extends Component {
 
