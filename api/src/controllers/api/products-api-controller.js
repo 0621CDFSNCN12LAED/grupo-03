@@ -43,6 +43,19 @@ const productsApiController = {
             }))
         });
     },
+
+    all: async (req, res) => {
+        const products = await productsService.findAll();
+
+        res.json({
+            meta: {
+                status: 200,
+                count: products.length,
+                url: "/api/products/all"
+            },
+            data: products
+        });
+    },
     
     detail: async (req, res) => {
         const product = await productsService.getById(req.params.id);

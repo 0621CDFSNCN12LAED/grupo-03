@@ -1,17 +1,71 @@
 window.onload = async () => {
-    const response = await fetch("http://localhost:3050/api/products");
-    const result = await response.json();
-    const data = result.data;
-    console.log(data);
+    const container = document.querySelector(".flex");
 
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    console.log(favorites);
+    const result = await fetch("http://localhost:3050/api/products/all");
+    const products = await result.json();
+    const data = products.data;
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let newCart = [];
+
+    cart.forEach((id) => {
+        newCart.push(parseInt(id));
+    });
 
     data
     .filter((product) => {
-        return favorites.includes(product.id);
+        return newCart.includes(product.id);
     })
     .forEach((product) => {
-        console.log(product);
+        const productWrapper = document.createElement("div");
+        productWrapper.setAttribute("class", "product-wrapper");
+
+        const article = document.createElement("article");
+        article.setAttribute("class", "product");
+        article.setAttribute("id", "product");
+
+        const productHyperLink = document.createElement("a");
+        productHyperLink.setAttribute("href", `/products/${product.id}`);
+        productHyperLink.setAttribute("class", "product-id");
+        productHyperLink.setAttribute("id", "product-id");
+        productHyperLink.setAttribute("data-product-id", `${product.id}`);
+
+        const productImage = document.createElement("img");
+        productImage.setAttribute("class", "product-img");
+        productImage.setAttribute("src", `${product.image}`);
+
+        const productContent = document.createElement("div");
+        productContent.setAttribute("class", "product-content");
+
+        const productName = document.createElement("p");
+        productName.textContent = `${product.name}`;
+        productName.setAttribute("class", "name");
+
+        const productPrice = document.createElement("p");
+        productPrice.textContent = `$${product.price}`;
+        productPrice.setAttribute("class", "price");
+
+        const productDiscount = document.createElement("p");
+        productDiscount.textContent = "40% off";
+        productDiscount.setAttribute("class", "discount");
+
+        const cartButton = document.createElement("div");
+        cartButton.setAttribute("class", "cart-icon-bottom");
+        cartButton.setAttribute("id", "cart-icon");
+
+        const cartIcon = document.createElement("i");
+        cartIcon.setAttribute("class", "fas fa-cart-plus");
+
+        container.appendChild(productWrapper);
+        productWrapper.appendChild(article);
+        article.appendChild(productHyperLink);
+        productHyperLink.appendChild(productImage);
+        article.appendChild(productContent);
+        productContent.appendChild(productName);
+        productContent.appendChild(productPrice);
+        productContent.appendChild(productDiscount);
+        productContent.appendChild(cartButton);
+        cartButton.appendChild(cartIcon);
     });
 }

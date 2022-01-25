@@ -7,6 +7,7 @@ const productsAPIController = require('../../controllers/api/products-api-contro
 
 //Read
 router.get('/', productsAPIController.list);
+router.get('/all', productsAPIController.all);
 router.get('/detail/:id', productsAPIController.detail);
 router.get("/categories", productsAPIController.categories);
 router.get("/categories/carnes", productsAPIController.findCarnes);

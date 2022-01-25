@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/styles-productIndex.css">
+    <link rel="stylesheet" href="/css/styles-products.css">
     <script defer src="/js/products.js"></script>
 </head>
-
 <body>
     <header>
         <%- include("../partials/header.ejs") %>
     </header>
-
     <main>
+        <span>0</span>
         <div class="flex">
-
             <% products.forEach(product => { %>
-                
                 <div class="product-wrapper">
                     <article class="product" id="product">
-                        <a href="/products/<%= product.id %>" class="product-id" id="product-id">
+                        <a href="/products/<%= product.id %>" class="product-id" id="product-id" data-product-id="<%= product.id %>">
                             <img class="product-img" src="<%= product.image %>">
                         </a>
                         <div class="product-content">
                             <p class="name"><%= product.name %></p>
                             <p class="price">$<%= product.price %></p>
                             <p class="discount">40% off</p>
-                            <div class="cart-icon-bottom" id="cart-icon" data-product-id="<%= product.id %>"><i class="fas fa-cart-plus"></i></div>
+                            <div class="cart-icon-bottom" id="cart-icon"><i class="fas fa-cart-plus"></i></div>
                         </div>
                     </article> 
                 </div>
-
             <%  }); %> 
-
         </div>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>
     </footer>
-
 </body>
-
 </html>

@@ -1,125 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include("../partials/head.ejs") %>
-    <link rel="stylesheet" href="/css/styles-cart.css">
+    <link rel="stylesheet" href="/css/styles-products.css">
     <script defer src="/js/productCart.js"></script>
 </head>
-
 <body>
     <header>
         <%- include("../partials/header.ejs") %>
     </header>
 
     <main>
-        <div class="main-contenedor">
-            <div class="barra-busqueda">
-                <form action="#" method="POST">
-                    <input type="text" name="search" placeholder="lo que buscás">
+        <div class="flex">
 
-                    <i class="fas fa-search lupa"></i>
-                </form>
-            </div>
-
-            <div class="nav-search">
-
-                <form action="/categorias" method="POST">
-                    <select name="categoría">
-                        <option value="1">Categoría</option>
-                        <option value="2">Carne Vacuna</option>
-                        <option value="3">Pescados</option>
-                        <option value="4">Mariscos</option>
-                        <option value="5">Pollo</option>
-                        <option value="6">Empanizados</option>
-                        <option value="7">Veganos</option>
-                        <option value="8">Vegetarianos</option>
-                        <option value="9">Celíacos</option>
-                    </select>
-                </form>
-                <form action="/productos" method="POST">
-
-                    <select name="producto">
-                        <option value="1">Buscar por</option>
-                        <option value="2">Frescos</option>
-                        <option value="3">Congelados</option>
-                        <option value="4">Empanizados</option>
-                        <option value="5">Cortes Premium</option>
-                        <option value="6">Pack</option>
-                        <option value="7">Precio</option>
-                    </select>
-                </form>
-            </div>
-            <section>
-                <div class="small-container cart-page">
-                   <table>
-                        <tr>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cart-info">
-                                    <img src="" alt="">
-                                    <div>
-                                        <p>Anillas</p>
-                                        <small>Price: $50.00</small>
-                                        <br>
-                                        <a href="#">Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input type="number" value="1"></td>
-                            <td>$50.00</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cart-info">
-                                    <img src="" alt="">
-                                    <div>
-                                        <p>Alitas de Pollo</p>
-                                        <small>Price: $60.00</small>
-                                        <br>
-                                        <a href="#">Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input type="number" value="1"></td>
-                            <td>$60.00</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="cart-info">
-                                    <img src="" alt="">
-                                    <div>
-                                        <p>Albondiga</p>
-                                        <small>Price: $40.00</small>
-                                        <br>
-                                        <a href="#">Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input type="number" value="1"></td>
-                            <td>$40.00</td>
-                        </tr>
-                    </table>
-                    <div class="total-price">
-                        <table>
-                            <tr>
-                                <td>Total</td>
-                                <td>$150.00</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
     <footer>
         <%- include("../partials/footer.ejs") %>
     </footer>
-
 </body>
-
 </html>
