@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const lastproductAPI = "/api/products/last-product";
+const lastProduct = "/api/products/last-product";
 
-function ProductDetail(props) {
+function LastDbProduct(props) {
   const [product, setProduct] = useState([]);
 
   async function searchProduct () {
-		const response = await fetch(lastproductAPI);
+		const response = await fetch(lastProduct);
 		const result = await response.json();
 		setProduct(result.data);
 	}
@@ -28,11 +28,11 @@ function ProductDetail(props) {
       <p>
         {product.name}
       </p>
-      <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">
+      <a className="btn btn-danger" target="_blank" rel="nofollow" href="/products">
         View movie detail
       </a>
     </>
   );
 }
 
-export default ProductDetail;
+export default LastDbProduct;

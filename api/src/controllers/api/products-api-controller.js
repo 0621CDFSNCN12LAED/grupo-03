@@ -101,119 +101,27 @@ const productsApiController = {
         });
     },
 
-    findCarnes: async (req, res) => {
-        const pageSize = 10;
-        const page = req.query.page || 0;
-        const offset = page * pageSize;
-        
-        const {count, rows} = await productsService.findByCategory(1, pageSize, page);
-
-        const nextPage = offset + pageSize < count ? `/api/products/categories/carnes?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/categories/carnes?page=${parseInt(page) - 1}` : null;
+    categoriesProducts: async (req, res) => {
+        const carnes = await productsService.filterByCategory(1);
+        const pescados = await productsService.filterByCategory(2);
+        const pollos = await productsService.filterByCategory(3);
+        const veganos = await productsService.filterByCategory(4);
 
         res.json({
             meta: {
                 status: 200,
-                count: count,
-                page: page,
-                pageSize: pageSize,
-                url: `/api/products/categories/carnes?page=${page}`,
-                nextUrl: nextPage,
-                previousUrl: prevPage
+                carnesCount: carnes.length,
+                pescadosCount: pescados.length,
+                pollosCount: pollos.length,
+                veganosCount: veganos.length,
+                url: "/api/products/categories/products"
             },
-            data: rows.map((product) => ({
-                id: product.id,
-                name: product.name, 
-                description: product.description,
-                detail: `/api/products/${product.id}`
-            }))
-        });
-    },
-
-    findPescados: async (req, res) => {
-        const pageSize = 10;
-        const page = req.query.page || 0;
-        const offset = page * pageSize;
-        
-        const {count, rows} = await productsService.findByCategory(2, pageSize, page);
-
-        const nextPage = offset + pageSize < count ? `/api/products/categories/pescados?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/categories/pescados?page=${parseInt(page) - 1}` : null;
-
-        res.json({
-            meta: {
-                status: 200,
-                count: count,
-                page: page,
-                pageSize: pageSize,
-                url: `/api/products/categories/pescados?page=${page}`,
-                nextUrl: nextPage,
-                previousUrl: prevPage
-            },
-            data: rows.map((product) => ({
-                id: product.id,
-                name: product.name, 
-                description: product.description,
-                detail: `/api/products/${product.id}`
-            }))
-        });
-    },
-
-    findPollos: async (req, res) => {
-        const pageSize = 10;
-        const page = req.query.page || 0;
-        const offset = page * pageSize;
-        
-        const {count, rows} = await productsService.findByCategory(3, pageSize, page);
-
-        const nextPage = offset + pageSize < count ? `/api/products/categories/pollos?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/categories/pollos?page=${parseInt(page) - 1}` : null;
-
-        res.json({
-            meta: {
-                status: 200,
-                count: count,
-                page: page,
-                pageSize: pageSize,
-                url: `/api/products/categories/pollos?page=${page}`,
-                nextUrl: nextPage,
-                previousUrl: prevPage
-            },
-            data: rows.map((product) => ({
-                id: product.id,
-                name: product.name, 
-                description: product.description,
-                detail: `/api/products/${product.id}`
-            }))
-        });
-    },
-
-    findVeganos: async (req, res) => {
-        const pageSize = 10;
-        const page = req.query.page || 0;
-        const offset = page * pageSize;
-        
-        const {count, rows} = await productsService.findByCategory(4, pageSize, page);
-
-        const nextPage = offset + pageSize < count ? `/api/products/categories/veganos?page=${parseInt(page) + 1}` : null;
-        const prevPage = page > 0 ? `/api/products/categories/veganos?page=${parseInt(page) - 1}` : null;
-
-        res.json({
-            meta: {
-                status: 200,
-                count: count,
-                page: page,
-                pageSize: pageSize,
-                url: `/api/products/categories/veganos?page=${page}`,
-                nextUrl: nextPage,
-                previousUrl: prevPage
-            },
-            data: rows.map((product) => ({
-                id: product.id,
-                name: product.name, 
-                description: product.description,
-                detail: `/api/products/${product.id}`
-            }))
+            data: {
+                carnes: carnes,
+                pescados: pescados,
+                pollos: pollos,
+                veganos: veganos
+            }
         });
     },
     

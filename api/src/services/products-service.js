@@ -72,10 +72,8 @@ const productsService = {
         return products[0];
     },
 
-    findByCategory: async (category, pageSize, page) => {
-        return await Product.findAndCountAll({
-            limit: pageSize,
-            offset: page * pageSize, 
+    findByCategory: async (category) => {
+        return await Product.findAll({
             where: {productCategoryId: category}
         });
     },

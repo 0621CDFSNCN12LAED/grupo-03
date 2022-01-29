@@ -1,10 +1,7 @@
 import React, {Component} from "react";
 
-const categoriesUrl = "/api/products/categories";
-const carnesUrl = "api/products/categories/carnes";
-const pescadosUrl = "api/products/categories/pescados";
-const pollosUrl = "api/products/categories/pollos";
-const veganosUrl = "api/products/categories/veganos";
+const categoriesURL = "/api/products/categories";
+const categoriesProductsURL = "/api/products/categories-products";
 
 class CategoriesInDb extends Component {
 
@@ -42,7 +39,7 @@ class CategoriesInDb extends Component {
   }
 
   async fetchCategories() {
-    const result = await fetch(categoriesUrl);
+    const result = await fetch(categoriesURL);
     const response = await result.json();
     const data = await response.data;
     this.setState({categories: data});
@@ -61,31 +58,31 @@ class CategoriesInDb extends Component {
   };
   
   async fetchCarnesProducts() {
-    const result = await fetch(carnesUrl);
+    const result = await fetch(categoriesProductsURL);
     const response = await result.json();
     const meta = await response.meta;
-    this.setState({carnesProducts: meta.count});
+    this.setState({carnesProducts: meta.carnesCount});
   };
 
   async fetchPescadosProducts() {
-    const result = await fetch(pescadosUrl);
+    const result = await fetch(categoriesProductsURL);
     const response = await result.json();
     const meta = await response.meta;
-    this.setState({pescadosProducts: meta.count});
+    this.setState({pescadosProducts: meta.pescadosCount});
   };
 
   async fetchPollosProducts() {
-    const result = await fetch(pollosUrl);
+    const result = await fetch(categoriesProductsURL);
     const response = await result.json();
     const meta = await response.meta;
-    this.setState({pollosProducts: meta.count});
+    this.setState({pollosProducts: meta.pollosCount});
   };
 
   async fetchVeganosProducts() {
-    const result = await fetch(veganosUrl);
+    const result = await fetch(categoriesProductsURL);
     const response = await result.json();
     const meta = await response.meta;
-    this.setState({veganosProducts: meta.count});
+    this.setState({veganosProducts: meta.veganosCount});
   };
 
   render() {

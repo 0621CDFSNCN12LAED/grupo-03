@@ -7,7 +7,7 @@ import Footer from "./components/footer/footer";
 import { Switch, Route } from "react-router-dom";
 import ContentWrapper from "./components/contentWrapper/contentWrapper";
 import SearchProducts from "./components/searchProducts/searchProducts";
-import ProductInDb from "./components/contentWrapper/productDetail/productInDb";
+import ProductInDb from "./components/contentWrapper/productInDb/productInDb";
 import ProductsInDb from "./components/productsInDb/productsInDb";
 import Error404 from "./components/error/error404";
 
@@ -21,7 +21,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={ContentWrapper}></Route>
             <Route path="/search-products" component={SearchProducts}></Route>
-            <Route path="/movie" component={ProductInDb}></Route>
+            <Route path="/last-product" component={ProductInDb}></Route>
             <Route path="/products" component={ProductsInDb}></Route>
             <Route component={Error404}></Route>
           </Switch>

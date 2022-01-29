@@ -39,9 +39,9 @@ function SideBar() {
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link collapsed" to="/movie">
+        <Link className="nav-link collapsed" to="/last-product">
           <i className="fas fa-fw fa-chart-area"></i>
-          <span>Movie</span>
+          <span>Last Product</span>
         </Link>
       </li>
 

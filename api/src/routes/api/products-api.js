@@ -10,10 +10,7 @@ router.get('/', productsAPIController.list);
 router.get('/all', productsAPIController.all);
 router.get('/detail/:id', productsAPIController.detail);
 router.get("/categories", productsAPIController.categories);
-router.get("/categories/carnes", productsAPIController.findCarnes);
-router.get("/categories/pescados", productsAPIController.findPescados);
-router.get("/categories/pollos", productsAPIController.findPollos);
-router.get("/categories/veganos", productsAPIController.findVeganos);
+router.get("/categories-products", productsAPIController.categoriesProducts);
 router.get("/last-product", productsAPIController.lastProduct);
 router.get("/search", productsAPIController.search);
 

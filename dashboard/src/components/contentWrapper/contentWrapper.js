@@ -1,6 +1,6 @@
 import ContentRowTop from "./contentRowTop/contentRowTop";
 import ContentCard from "./contentCard/contentCard";
-import ProductDetail from "./productDetail/productDetail";
+import ProductInDb from "./productInDb/productInDb";
 import CategoriesInDb from "./categoriesInDb/categoriesInDb";
 
 export default function ContentWrapper() {
@@ -14,7 +14,7 @@ export default function ContentWrapper() {
 
           <div className="row">
             <ContentCard title="Last Created Product">
-              <ProductDetail />
+              <ProductInDb />
             </ContentCard>
 
             <ContentCard title="Categories">
