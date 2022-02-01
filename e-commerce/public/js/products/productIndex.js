@@ -15,14 +15,6 @@ function addToCart (event) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function onLoadCartNumbers () {
-    let productNumbers = localStorage.getItem("cartNumbers");
-
-    if (productNumbers) {
-        document.querySelector("span").textContent = productNumbers;
-    }
-}
-
 function cartNumbers () {
     let productNumbers = localStorage.getItem("cartNumbers");
 
@@ -36,6 +28,3 @@ function cartNumbers () {
         document.querySelector("span").textContent = 1;
     }
 }
-
-onLoadCartNumbers();
-localStorage.clear()

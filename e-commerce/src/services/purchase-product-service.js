@@ -14,7 +14,8 @@ module.exports = {
   findAndCountAll: async (pageSize, page) => {
     return await PurchaseProduct.findAndCountAll({
       limit: pageSize,
-      offset: page * pageSize
+      offset: page * pageSize,
+      include: {association: "productos"}
     });
   },
 
@@ -29,11 +30,21 @@ module.exports = {
   },
 
   mostSoldProducts: async () => {
-    return await PurchaseProduct.findAll({
+    const soldProducts= await PurchaseProduct.findAll({
       order: [
-        sequelize.fn("max", sequelize.col("productId"))
-      ]
+        ["productId", "DESC"]
+      ],
+      include: [{association: "productos"}, {association: "compras"}]
     });
-  }
+    
+    let mostSold = [];
 
+    for (let i = 0; i < soldProducts.length; i++) {
+      if (soldProducts[i++].productId == soldProducts[i].productId) {
+        mostSold.push(soldProducts[i]);
+      }
+    }
+
+    return mostSold;
+  }
 };

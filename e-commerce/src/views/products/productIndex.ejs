@@ -3,14 +3,13 @@
 <head>
     <%- include("../partials/head.ejs") %>
     <link rel="stylesheet" href="/css/styles-products.css">
-    <script defer src="/js/products.js"></script>
+    <script defer src="/js/products/productIndex.js"></script>
 </head>
 <body>
     <header>
         <%- include("../partials/header.ejs") %>
     </header>
     <main>
-        <span>0</span>
         <div class="flex">
             <% products.forEach(product => { %>
                 <div class="product-wrapper">

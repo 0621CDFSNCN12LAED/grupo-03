@@ -19,4 +19,7 @@ router.use("/users", usersRouter);
 const productsRouter = require("./products.js");
 router.use("/products", productsRouter);
 
+const salesRouter = require("./sales.js");
+router.use("/sales", salesRouter);
+
 module.exports = router;

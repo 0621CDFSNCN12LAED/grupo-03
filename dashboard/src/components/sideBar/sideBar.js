@@ -1,7 +1,7 @@
 import React from "react";
-import logoMorfi from "../../assets/images/dh-morfi-logo-white.png";
-
 import { Link } from "react-router-dom";
+
+import logoMorfi from "../../assets/images/dh-morfi-logo-white.png";
 
 function SideBar() {
   return (
@@ -9,14 +9,14 @@ function SideBar() {
       className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
       id="accordionSidebar"
     >
-      <a
+      <Link
         className="sidebar-brand d-flex align-items-center justify-content-center"
-        href="/"
+        to="/"
       >
         <div className="sidebar-brand-icon">
           <img className="w-100" src={logoMorfi} alt="Digital House" />
         </div>
-      </a>
+      </Link>
 
       <hr className="sidebar-divider my-0" />
 
@@ -32,16 +32,9 @@ function SideBar() {
       <div className="sidebar-heading">Actions</div>
 
       <li className="nav-item">
-        <Link className="nav-link" to="/search-products">
-          <i className="fas fa-fw fa-search"></i>
-          <span>Search Products</span>
-        </Link>
-      </li>
-
-      <li className="nav-item">
-        <Link className="nav-link collapsed" to="/last-product">
-          <i className="fas fa-fw fa-chart-area"></i>
-          <span>Last Product</span>
+        <Link className="nav-link collapsed" to="/sales">
+          <i className="fas fa-fw fa-hand-holding-usd"></i>
+          <span>Sales</span>
         </Link>
       </li>
 
@@ -49,6 +42,27 @@ function SideBar() {
         <Link className="nav-link" to="/products">
           <i className="fas fa-fw fa-shopping-cart"></i>
           <span>Products</span>
+        </Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link collapsed" to="/sold-products">
+          <i className="fas fa-fw fa-cart-arrow-down"></i>
+          <span>Sold Products</span>
+        </Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link" to="#">
+          <i className="fas fa-fw fa-cart-plus"></i>
+          <span>Create Product</span>
+        </Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link" to="/search-products">
+          <i className="fas fa-fw fa-search"></i>
+          <span>Search Products</span>
         </Link>
       </li>
 

@@ -43,7 +43,7 @@ const usersController = {
     },
 
     edit: (req, res) => {
-        res.render("users/editProfile");
+        res.render("users/userEdit");
     },
 
     update: async (req, res) => {

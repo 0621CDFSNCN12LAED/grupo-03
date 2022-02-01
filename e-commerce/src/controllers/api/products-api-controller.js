@@ -102,10 +102,10 @@ const productsApiController = {
     },
 
     categoriesProducts: async (req, res) => {
-        const carnes = await productsService.filterByCategory(1);
-        const pescados = await productsService.filterByCategory(2);
-        const pollos = await productsService.filterByCategory(3);
-        const veganos = await productsService.filterByCategory(4);
+        const carnes = await productsService.findByCategory(1);
+        const pescados = await productsService.findByCategory(2);
+        const pollos = await productsService.findByCategory(3);
+        const veganos = await productsService.findByCategory(4);
 
         res.json({
             meta: {

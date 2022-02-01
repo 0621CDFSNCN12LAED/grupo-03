@@ -8,22 +8,36 @@ const salesApiController = {
         const page = req.query.page || 0;
         const offset = page * pageSize;
 
-        const {count, rows} = await purchaseService.findAndCountAll(pageSize, page);
+        const sales = await purchaseService.findAll(pageSize, page);
 
-        const nextPage = offset + pageSize < count ? `/api/sales?page=${parseInt(page) + 1}` : null;
+        const nextPage = offset + pageSize < sales.length ? `/api/sales?page=${parseInt(page) + 1}` : null;
         const prevPage = page > 0 ? `/api/sales?page=${parseInt(page) - 1}` : null;
 
         res.json({
             meta: {
                 status: 200,
-                count: count,
+                count: sales.length,
                 page: page,
                 pageSize: pageSize,
                 url: `/api/sales?page=${page}`,
                 nextUrl: nextPage,
                 prevUrl: prevPage
             },
-            data: rows
+            data: sales.map((sale) => ({
+                id: sale.id,
+                detail: `/api/sales/${sale.id}`,
+                date: sale.date,
+                totalPrice: sale.totalPrice,
+                totalQuantity: sale.totalQuantity,
+                user: {
+                    id: sale.usuarios.id,
+                    detail: `/api/users/${sale.usuarios.id}`,
+                    firstName: sale.usuarios.firstName,
+                    lastName: sale.usuarios.lastName,
+                    email: sale.usuarios.email
+                },
+                products: sale.productos
+            }))
         });
     },
     
@@ -79,29 +93,9 @@ const salesApiController = {
         res.json({
             meta: {
                 status: 200,
-                url: "/api/sales/products/last-sold-products"
+                url: "/api/sales/last-sold-products"
             },
-            data: purchasesProducts.map((purchaseProduct) => ({
-                id: purchaseProduct.id,
-                purchasePrice: purchaseProduct.purchasePrice,
-                quantity: purchaseProduct.quantity,
-                sales: {
-                    id: purchaseProduct.compras.id,
-                    date: purchaseProduct.compras.date,
-                    totalPrice: purchaseProduct.compras.totalPrice,
-                    totalQuantity: purchaseProduct.compras.totalQuantity,
-                    userId: purchaseProduct.compras.userId
-                },
-                products: {
-                    id: purchaseProduct.productos.id,
-                    name: purchaseProduct.productos.name,
-                    description: purchaseProduct.productos.description,
-                    price: purchaseProduct.productos.price,
-                    weight: purchaseProduct.productos.weight,
-                    image: purchaseProduct.productos.image,
-                    productCategoryId: purchaseProduct.productos.productCategoryId
-                }
-            }))
+            data: purchasesProducts
         });
     },
 
@@ -112,11 +106,9 @@ const salesApiController = {
             meta: {
                 status: 200,
                 count: products.length,
-                url: "api/sales/products/most-sold-products"
+                url: "api/sales/most-sold-products"
             },
             data: products
-        }).catch((error) => {
-            res.send(error)
         });
     }
 

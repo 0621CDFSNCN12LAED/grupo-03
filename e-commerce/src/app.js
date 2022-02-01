@@ -26,6 +26,9 @@ app.use(express.static(publicPath));
 const mainRouter = require("./routes/main.js");
 app.use("/", mainRouter);
 
+app.use((req, res, next) => {
+    res.status(404).render("errors/404");
+})
 
 const cors = require("cors");
 app.use(

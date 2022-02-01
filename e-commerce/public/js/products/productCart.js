@@ -5,7 +5,7 @@ window.onload = async () => {
     const products = await result.json();
     const data = products.data;
 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let newCart = [];
 
@@ -68,4 +68,23 @@ window.onload = async () => {
         productContent.appendChild(cartButton);
         cartButton.appendChild(cartIcon);
     });
+
+    const carts = document.querySelectorAll(".cart-icon-bottom");
+    carts.forEach( button => {
+        button.addEventListener("click", deleteFromCart);
+    });
+    function deleteFromCart (event) {
+        const button = event.target;
+        const product = button.closest(".product");
+        const productID = product.querySelector(".product-id").dataset.productId;
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i] === productID) {
+                cart.splice(i, 1);
+            }
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    //const deleteCart = document.getElementById("delete-sale");
+    //deleteCart.addEventListener("click", localStorage.setItem("cart", null));
 }

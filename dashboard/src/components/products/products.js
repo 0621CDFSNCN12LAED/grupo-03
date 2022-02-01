@@ -4,7 +4,7 @@ import ContentCard from "../contentWrapper/contentCard/contentCard";
 
 const productsUrl = "/api/products";
 
-class ProductsInDb extends Component {
+class Products extends Component {
 
   constructor(props) {
     super(props)
@@ -84,4 +84,4 @@ class ProductsInDb extends Component {
 
 }
 
-export default ProductsInDb;
+export default Products;

@@ -28,7 +28,7 @@ const authAdminMiddleware = require("../middlewares/auth-admin-middleware");
 //controllers
 const productsController = require("../controllers/products-controller.js");
 
-//rutas
+//routes
 router.use(validationsErrorsMiddleware);
 
 //Create
@@ -43,7 +43,7 @@ router.post(
 
 //Read
 router.get("/", productsController.index);
-router.get("/Cart", productsController.cart);
+router.get("/cart", productsController.cart);
 router.get("/category/:id", productsController.byCategory);
 router.get("/:id", productsController.detail);
 

@@ -3,18 +3,15 @@ const { Purchase } = require("../database/models");
 module.exports = {
   getById: async (id) => {
     return await Purchase.findByPk(id, {
-      include: [{association: "usuarios"}]
+      include: [{association: "usuarios"}, {association: "productos"}]
     });
   },
 
-  getAll: async () => {
-    return await Purchase.findAll();
-  },
-
-  findAndCountAll: async (pageSize, page) => {
-    return await Purchase.findAndCountAll({
+  findAll: async (pageSize, page) => {
+    return await Purchase.findAll({
       limit: pageSize,
-      offset: page * pageSize
+      offset: page * pageSize,
+      include: [{association: "usuarios"}, {association: "productos"}]
     });
   }
 };
